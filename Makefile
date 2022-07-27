@@ -9,7 +9,7 @@ OBJS = src/*.cpp
 CC = g++
 
 #INCLUDE_PATHS specifies the additional include paths we'll need
-INCLUDE_PATHS = -Iinclude
+INCLUDE_PATHS = -Iinclude 
 
 #LIBRARY_PATHS specifies the additional library paths we'll need
 LIBRARY_PATHS = -Llib 
@@ -20,7 +20,7 @@ LIBRARY_PATHS = -Llib
 COMPILER_FLAGS = -w 
 
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
 #OBJ_NAME specifies the name of our exectuable
 OBJ_NAME = main.exe
