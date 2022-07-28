@@ -66,7 +66,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     }
 
     //load text
-    TTF_Font * ourFont = TTF_OpenFont("BRUSHSCI.TTF",90);
+    TTF_Font * ourFont = TTF_OpenFont("ALGER.TTF",70);
     if(ourFont == nullptr){
         std::cout<<"Font cannot be loaded"<<std::endl;
     }
@@ -89,7 +89,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     rect1.h = 900;
     rect1.w = 240;
     //rendering menu background
-    SDL_SetRenderDrawColor(ren, 0, 0, 255, 255);
+    SDL_SetRenderDrawColor(ren, 0, 128, 128, 128);
     SDL_RenderFillRect(ren, &rect1);
 
     //background rectangle
