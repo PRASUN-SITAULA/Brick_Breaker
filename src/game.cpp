@@ -1,8 +1,8 @@
 #include <headers/games.h>
-#include <headers/text.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+
 SDL_Renderer *Game::ren = nullptr;
 
 Game::Game(){
@@ -52,7 +52,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Rect rectangle;
     rectangle.x = 0;
     rectangle.y = 0;
-    rectangle.w = 800;
+    rectangle.w = 900;
     rectangle.h = 600;
 
 
@@ -65,32 +65,43 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
         std::cout<<"Failed to intialize SDL_TTF"<<std::endl;
     }
 
-
     //load text
-    TTF_Font * ourFont = TTF_OpenFont("BRUSHSCI.TTF",8);
+    TTF_Font * ourFont = TTF_OpenFont("BRUSHSCI.TTF",90);
     if(ourFont == nullptr){
         std::cout<<"Font cannot be loaded"<<std::endl;
     }
-    SDL_Surface* surfacetext = TTF_RenderText_Solid(ourFont,"PLAY",{255,256,245});
+    SDL_Surface *surfacetext = TTF_RenderText_Blended(ourFont,"PLAY",{255,255,0});
     SDL_Texture *texturetext = SDL_CreateTextureFromSurface(ren,surfacetext);
     SDL_FreeSurface(surfacetext);
 
 
     //rectangle for menu
     SDL_Rect rect;
-    rect.x = 800;
+    rect.x = 870;
     rect.y = 0;
-    rect.w = 200;
-    rect.h = 400;
+    rect.w = 86;
+    rect.h = 86;
 
+    //rectangle for menu background
+    SDL_Rect rect1;
+    rect1.x = 800;
+    rect1.y = 0;
+    rect1.h = 900;
+    rect1.w = 240;
+    //rendering menu background
+    SDL_SetRenderDrawColor(ren, 0, 0, 255, 255);
+    SDL_RenderFillRect(ren, &rect1);
+
+    //background rectangle
     SDL_RenderCopy(ren,texturetext,NULL,&rect);
     SDL_RenderPresent(ren);
 
     // adding color to screen
     // SDL_Surface *screen = SDL_GetWindowSurface(window);
-    // Uint32 color = SDL_MapRGB( screen->format,127,247,255 );
-    // SDL_FillRect( screen ,NULL, color);
+    //  Uint32 color = SDL_MapRGB( screen->format,127,247,255 );
+    //  SDL_FillRect( screen ,NULL, color);
     // SDL_UpdateWindowSurface( window );
+    
 }
 
 void Game::gameLoop(){
