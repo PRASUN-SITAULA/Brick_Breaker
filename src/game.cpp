@@ -1,4 +1,5 @@
 #include <headers/games.h>
+#include <headers/window.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -18,6 +19,8 @@ void Game::run(){
     init("Bricks Breaker", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,screenWidth, screenHeight ,SDL_WINDOW_SHOWN);
     gameLoop();
 }
+
+SDL_Rect rect = { 870, 0, 86, 86};
 
 void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING); //initialize sdl
@@ -75,19 +78,13 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_FreeSurface(surfacetext);
 
 
-    //rectangle for menu
-    SDL_Rect rect;
-    rect.x = 870;
-    rect.y = 0;
-    rect.w = 86;
-    rect.h = 86;
-
     //rectangle for menu background
     SDL_Rect rect1;
     rect1.x = 800;
     rect1.y = 0;
     rect1.h = 900;
     rect1.w = 240;
+
     //rendering menu background
     SDL_SetRenderDrawColor(ren, 0, 128, 128, 128);
     SDL_RenderFillRect(ren, &rect1);
@@ -119,6 +116,23 @@ void Game::handleEvents(){
         case SDL_QUIT:
         gameState = GameState::EXIT;
         break;
+    }
+    
+    if(SDL_MOUSEBUTTONDOWN == evnt.type)
+    {
+        SDL_Point mousePosition;
+        // Mouse click coords from event handler
+        mousePosition.x = evnt.motion.x; 
+        mousePosition.y = evnt.motion.y;
+
+        if (SDL_PointInRect(&mousePosition, &rect)) {
+            std::cout<<"mouse is pressed"<<std::endl;
+            SDL_DestroyWindow(window);
+            Window window;
+            window.run();
+
+        }
+      
     }
 
 }

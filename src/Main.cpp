@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <headers/games.h>
+#include <headers/window.h>
 #include <SDL2/SDL_image.h>
 
 

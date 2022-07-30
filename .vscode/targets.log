@@ -5,12 +5,10 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Thu Jul 28 12:02:55 2022
+# Make data base, printed on Sat Jul 30 12:54:27 2022
 
 # Variables
- 
 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
@@ -35,7 +33,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_9812_EHCIAMJRTLSWEQXW
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11100_QFZHDRVYCDYXNQBK
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -85,7 +83,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 9812
+VSCODE_PID = 11100
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -121,7 +119,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/mingw64/bin:/mingw64:/usr/bin:/c/Program Files/Git/cmd:/c/Users/user/AppData/Local/Microsoft/WindowsApps:/c/Users/user/AppData/Local/Programs/Microsoft VS Code/bin
+PATH = /c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/mingw64/bin:/mingw64:/usr/bin:/c/Program Files/Git/cmd:/c/Libraries/SFML/bin:/c/Users/user/AppData/Local/Microsoft/WindowsApps:/c/Users/user/AppData/Local/Programs/Microsoft VS Code/bin:/c/Libraries/SFML/bin
 # environment
 ZES_ENABLE_SYSMAN = 1
 # environment
@@ -175,7 +173,6 @@ APPDATA = C:\Users\user\AppData\Roaming
 # environment
 HOMEDRIVE = C:
 # environment
- 
 PROCESSOR_ARCHITECTURE = AMD64
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -185,7 +182,6 @@ HOME = /home/user
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
- 
 # environment
 TEMP = /c/Users/user/AppData/Local/Temp
 # environment
@@ -223,10 +219,10 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# src (device 3269702283, inode 3096224744005559): 4 files, no impossibilities.
+# src (device 3269702283, inode 3096224744005559): 5 files, no impossibilities.
 # . (device 3269702283, inode 5348024557522936): 17 files, no impossibilities.
 
-# 21 files, no impossibilities in 2 directories.
+# 22 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -247,7 +243,14 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
-all: src/Main.cpp src/game.cpp
+# Not a target:
+src/window.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-29 14:25:23.5873589
+#  File has been updated.
+#  Successfully updated.
+
+all: src/Main.cpp src/game.cpp src/window.cpp
 #  Command line target.
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
@@ -261,14 +264,13 @@ all: src/Main.cpp src/game.cpp
 # automatic
 # < := src/Main.cpp
 # automatic
-# + := src/Main.cpp src/game.cpp
+# + := src/Main.cpp src/game.cpp src/window.cpp
 # automatic
 # % := 
 # automatic
-# ^ := src/Main.cpp src/game.cpp
+# ^ := src/Main.cpp src/game.cpp src/window.cpp
 # automatic
- 
-# ? := src/Main.cpp src/game.cpp
+# ? := src/Main.cpp src/game.cpp src/window.cpp
 # automatic
 # | := 
 # variable set hash-table stats:
@@ -279,14 +281,14 @@ all: src/Main.cpp src/game.cpp
 # Not a target:
 src/Main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-25 16:39:41.3519799
+#  Last modified 2022-07-29 12:57:06.8011487
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-27 20:42:54.3288687
+#  Last modified 2022-07-29 14:02:14.1746397
 #  File has been updated.
 #  Successfully updated.
 
@@ -297,19 +299,19 @@ src/game.cpp:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/20=0%
+# Load=7/1024=1%, Rehash=0, Collisions=0/22=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 25 / storage = 221 B / avg = 8 B
-# current buf: size = 8162 B / used = 221 B / count = 25 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 27 / storage = 244 B / avg = 9 B
+# current buf: size = 8162 B / used = 244 B / count = 27 / avg = 9 B
 
-# strcache performance: lookups = 35 / hit rate = 28%
+# strcache performance: lookups = 37 / hit rate = 27%
 # hash-table stats:
-# Load=25/8192=0%, Rehash=0, Collisions=0/35=0%
-# Finished Make data base on Thu Jul 28 12:02:55 2022
+# Load=27/8192=0%, Rehash=0, Collisions=0/37=0%
+# Finished Make data base on Sat Jul 30 12:54:27 2022
 
  
