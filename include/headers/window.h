@@ -11,17 +11,19 @@ class Window{
     void run();
    
     private:
-    void init(const char *title, int x, int y, int w, int h, Uint32 flags);  // flags for window resizeability, x,y for postion of window
+    //void init(const char *title, int x, int y, int w, int h, Uint32 flags);  // flags for window resizeability, x,y for postion of window
     void gameLoop();
     void handleEvents();
-
-    SDL_Window* win;
+    void render();
+    void input();
+    void update();
+    void write(std::string text, std::string score, int x, int y);
+    void setBricks(int i);
+    void resetBricks(); 
+    SDL_Window* window;
     int screenWidth ;
     int screenHeight ;
-    WindowState WindowState;
-    
+    WindowState windowState;
     public:
     static SDL_Renderer *renderer;
-
-
 };

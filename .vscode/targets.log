@@ -1,14 +1,17 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
+ 
 # Built for x86_64-pc-msys
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sat Jul 30 12:54:27 2022
+# Make data base, printed on Wed Aug  3 18:18:45 2022
 
 # Variables
+ 
 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
@@ -33,7 +36,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11100_QFZHDRVYCDYXNQBK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11708_TKLOABPNYOOGIFJW
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -83,7 +86,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11100
+VSCODE_PID = 11708
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -130,7 +133,9 @@ MAKEFILES :=
 ^F = $(notdir $^)
 # environment
 PROMPT = $P$G
+ 
 # environment
+ 
 LOGONSERVER = \\PRASUN
 # environment
 USERNAME = user
@@ -211,6 +216,7 @@ INCLUDE_PATHS = -Iinclude
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
+ 
 # Load=100/1024=10%, Rehash=0, Collisions=15/138=11%
 
 # Pattern-specific Variable Values
@@ -220,9 +226,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # Directories
 
 # src (device 3269702283, inode 3096224744005559): 5 files, no impossibilities.
-# . (device 3269702283, inode 5348024557522936): 17 files, no impossibilities.
+# . (device 3269702283, inode 5348024557522936): 19 files, no impossibilities.
 
-# 22 files, no impossibilities in 2 directories.
+# 24 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -246,7 +252,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-29 14:25:23.5873589
+#  Last modified 2022-08-03 18:15:54.4460818
 #  File has been updated.
 #  Successfully updated.
 
@@ -288,7 +294,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-29 14:02:14.1746397
+#  Last modified 2022-08-03 18:17:18.407946
 #  File has been updated.
 #  Successfully updated.
 
@@ -306,12 +312,12 @@ src/game.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 27 / storage = 244 B / avg = 9 B
-# current buf: size = 8162 B / used = 244 B / count = 27 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 29 / storage = 263 B / avg = 9 B
+# current buf: size = 8162 B / used = 263 B / count = 29 / avg = 9 B
 
-# strcache performance: lookups = 37 / hit rate = 27%
+# strcache performance: lookups = 39 / hit rate = 25%
 # hash-table stats:
-# Load=27/8192=0%, Rehash=0, Collisions=0/37=0%
-# Finished Make data base on Sat Jul 30 12:54:27 2022
+# Load=29/8192=0%, Rehash=0, Collisions=0/39=0%
+# Finished Make data base on Wed Aug  3 18:18:45 2022
 
  

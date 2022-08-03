@@ -5,7 +5,7 @@
 #include <SDL2/SDL_ttf.h>
 
 SDL_Renderer *Game::ren = nullptr;
-
+TTF_Font * ourFont;
 Game::Game(){
     window = nullptr;
     screenHeight = 600;
@@ -51,7 +51,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
         std::cout<<"Image not loaded"<<std::endl;
     }
 
-    
+    //rectangle for menu
     SDL_Rect rectangle;
     rectangle.x = 0;
     rectangle.y = 0;
@@ -69,7 +69,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     }
 
     //load text
-    TTF_Font * ourFont = TTF_OpenFont("ALGER.TTF",70);
+    ourFont = TTF_OpenFont("ALGER.TTF",70);
     if(ourFont == nullptr){
         std::cout<<"Font cannot be loaded"<<std::endl;
     }
@@ -111,28 +111,42 @@ void Game::gameLoop(){
 
 void Game::handleEvents(){
     SDL_Event evnt;
-    SDL_PollEvent(&evnt);
-    switch (evnt.type){
-        case SDL_QUIT:
-        gameState = GameState::EXIT;
-        break;
-    }
-    
-    if(SDL_MOUSEBUTTONDOWN == evnt.type)
+    // switch (evnt.type){
+    //     case SDL_QUIT:
+    //     gameState = GameState::EXIT;
+    //     break;
+    // }
+
+    while (SDL_PollEvent(&evnt))
     {
-        SDL_Point mousePosition;
-        // Mouse click coords from event handler
-        mousePosition.x = evnt.motion.x; 
-        mousePosition.y = evnt.motion.y;
+        if (evnt.type == SDL_QUIT)
+        {   
 
-        if (SDL_PointInRect(&mousePosition, &rect)) {
-            std::cout<<"mouse is pressed"<<std::endl;
+            TTF_CloseFont(ourFont);
             SDL_DestroyWindow(window);
-            Window window;
-            window.run();
-
+            SDL_DestroyRenderer(ren);
+            SDL_Quit();
+            TTF_Quit();
         }
-      
+    
+
+        
+        if(SDL_MOUSEBUTTONDOWN == evnt.type)
+        {
+            SDL_Point mousePosition;
+            // Mouse click coords from event handler
+            mousePosition.x = evnt.motion.x; 
+            mousePosition.y = evnt.motion.y;
+
+            if (SDL_PointInRect(&mousePosition, &rect)) {
+                std::cout<<"mouse is pressed"<<std::endl;
+                SDL_DestroyWindow(window);
+                Window window;
+                window.run();
+
+            }
+        
+        }
     }
 
 }
