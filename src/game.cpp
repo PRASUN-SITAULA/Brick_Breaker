@@ -20,7 +20,7 @@ void Game::run(){
     gameLoop();
 }
 
-SDL_Rect rect = { 870, 0, 86, 86};
+SDL_Rect rect = { 870, 0, 86, 86 };
 
 void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING); //initialize sdl
@@ -86,7 +86,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     rect1.w = 240;
 
     //rendering menu background
-    SDL_SetRenderDrawColor(ren, 0, 128, 128, 128);
+    SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
     SDL_RenderFillRect(ren, &rect1);
 
     //background rectangle
@@ -111,12 +111,6 @@ void Game::gameLoop(){
 
 void Game::handleEvents(){
     SDL_Event evnt;
-    // switch (evnt.type){
-    //     case SDL_QUIT:
-    //     gameState = GameState::EXIT;
-    //     break;
-    // }
-
     while (SDL_PollEvent(&evnt))
     {
         if (evnt.type == SDL_QUIT)
@@ -130,7 +124,6 @@ void Game::handleEvents(){
         }
     
 
-        
         if(SDL_MOUSEBUTTONDOWN == evnt.type)
         {
             SDL_Point mousePosition;

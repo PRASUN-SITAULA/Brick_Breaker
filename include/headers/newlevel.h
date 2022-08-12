@@ -3,12 +3,13 @@
 #include <SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 
-enum class WindowState {PLAY, EXIT};
-class Window{
+enum class LevelState {PLAY, EXIT};
+
+class NewLevel{
     public:
     
-    Window();
-    ~Window();
+    NewLevel();
+    ~NewLevel();
     void run();
    
     private:
@@ -24,7 +25,7 @@ class Window{
     SDL_Window* window;
     int screenWidth ;
     int screenHeight ;
-    WindowState windowState;
+    LevelState levelState;
     public:
     static SDL_Renderer *renderer;
 };

@@ -24,5 +24,4 @@ class Game{
     public:
     static SDL_Renderer *ren;
 
-
 };

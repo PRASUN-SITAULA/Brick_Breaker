@@ -1,6 +1,5 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
- 
 # Built for x86_64-pc-msys
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -8,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Wed Aug  3 18:18:45 2022
+# Make data base, printed on Fri Aug 12 18:24:46 2022
 
 # Variables
  
@@ -36,7 +35,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11708_TKLOABPNYOOGIFJW
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15032_WWCOOVPGFFIDINHC
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -50,7 +49,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\user\AppData\Roaming\Code\CachedData\3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = C:\Users\user\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
 # environment
 LANG = C
 # default
@@ -66,7 +65,7 @@ ONEDRIVE = C:\Users\user\OneDrive
 # makefile
 CURDIR := /c/Users/user/Desktop/C++ Project
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -86,7 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11708
+VSCODE_PID = 15032
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -119,13 +118,16 @@ COMSPEC = C:\WINDOWS\system32\cmd.exe
 WINDIR = C:\WINDOWS
 # environment
 MAKELEVEL := 0
+ 
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/mingw64/bin:/mingw64:/usr/bin:/c/Program Files/Git/cmd:/c/Libraries/SFML/bin:/c/Users/user/AppData/Local/Microsoft/WindowsApps:/c/Users/user/AppData/Local/Programs/Microsoft VS Code/bin:/c/Libraries/SFML/bin
+PATH = /c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/mingw64/bin:/mingw64:/usr/bin:/c/Program Files/Git/cmd:/c/Users/user/AppData/Local/Microsoft/WindowsApps:/c/Users/user/AppData/Local/Programs/Microsoft VS Code/bin
 # environment
 ZES_ENABLE_SYSMAN = 1
+ 
 # environment
+ 
 COMPUTERNAME = PRASUN
 # default
 MAKEFILES := 
@@ -133,9 +135,7 @@ MAKEFILES :=
 ^F = $(notdir $^)
 # environment
 PROMPT = $P$G
- 
 # environment
- 
 LOGONSERVER = \\PRASUN
 # environment
 USERNAME = user
@@ -190,7 +190,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = /c/Users/user/AppData/Local/Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\680802a3ebd40da3f83beb9d3e841b70-1.69.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\680802a3ebd40da3f83beb9d3e841b70-1.70.1-main-sock
 # environment
 TERM = xterm-256color
 # default
@@ -225,10 +225,10 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 
 # Directories
 
-# src (device 3269702283, inode 3096224744005559): 5 files, no impossibilities.
-# . (device 3269702283, inode 5348024557522936): 19 files, no impossibilities.
+# src (device 3269702283, inode 3096224744005559): 6 files, no impossibilities.
+# . (device 3269702283, inode 5348024557522936): 21 files, no impossibilities.
 
-# 24 files, no impossibilities in 2 directories.
+# 27 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -252,11 +252,11 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-03 18:15:54.4460818
+#  Last modified 2022-08-12 15:40:06.0742774
 #  File has been updated.
 #  Successfully updated.
 
-all: src/Main.cpp src/game.cpp src/window.cpp
+all: src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 #  Command line target.
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
@@ -270,13 +270,13 @@ all: src/Main.cpp src/game.cpp src/window.cpp
 # automatic
 # < := src/Main.cpp
 # automatic
-# + := src/Main.cpp src/game.cpp src/window.cpp
+# + := src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 # automatic
 # % := 
 # automatic
-# ^ := src/Main.cpp src/game.cpp src/window.cpp
+# ^ := src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 # automatic
-# ? := src/Main.cpp src/game.cpp src/window.cpp
+# ? := src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 # automatic
 # | := 
 # variable set hash-table stats:
@@ -294,7 +294,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-03 18:17:18.407946
+#  Last modified 2022-08-04 14:06:12.9881706
 #  File has been updated.
 #  Successfully updated.
 
@@ -304,20 +304,28 @@ src/game.cpp:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+src/newlevel.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-12 15:27:07.7268297
+#  File has been updated.
+#  Successfully updated.
+
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/24=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 263 B / avg = 9 B
-# current buf: size = 8162 B / used = 263 B / count = 29 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 319 B / avg = 9 B
+ 
+# current buf: size = 8162 B / used = 319 B / count = 33 / avg = 9 B
 
-# strcache performance: lookups = 39 / hit rate = 25%
+# strcache performance: lookups = 43 / hit rate = 23%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=0/39=0%
-# Finished Make data base on Wed Aug  3 18:18:45 2022
+# Load=33/8192=0%, Rehash=0, Collisions=0/43=0%
+# Finished Make data base on Fri Aug 12 18:24:46 2022
 
  
