@@ -20,7 +20,7 @@ void Game::run(){
     gameLoop();
 }
 
-SDL_Rect rect = { 870, 0, 86, 86 };
+SDL_Rect rect = { 830, 0, 215, 215};
 
 void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING); //initialize sdl
@@ -45,60 +45,41 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     }
 
     //load image
-    SDL_Surface *image;
-    image = IMG_Load("./unnamed.png");
+    SDL_Surface *image,*button;
+    image = IMG_Load("images/unnamed.png");
     if(!image){
         std::cout<<"Image not loaded"<<std::endl;
     }
+    button = IMG_Load("images/playbutton.png");
+    if(!button){
+        std::cout<<"button not loaded"<<std::endl;
+    }
 
-    //rectangle for menu
+    //rectangle image background
     SDL_Rect rectangle;
     rectangle.x = 0;
     rectangle.y = 0;
-    rectangle.w = 900;
+    rectangle.w = 850;
     rectangle.h = 600;
-
-
-    //render iamge
-    SDL_Texture * ourPNG = SDL_CreateTextureFromSurface(ren,image);
-    SDL_RenderCopy(ren, ourPNG, NULL,&rectangle);
-
-    //initialize text
-    if(TTF_Init() == -1){
-        std::cout<<"Failed to intialize SDL_TTF"<<std::endl;
-    }
-
-    //load text
-    ourFont = TTF_OpenFont("ALGER.TTF",70);
-    if(ourFont == nullptr){
-        std::cout<<"Font cannot be loaded"<<std::endl;
-    }
-    SDL_Surface *surfacetext = TTF_RenderText_Blended(ourFont,"PLAY",{255,255,0});
-    SDL_Texture *texturetext = SDL_CreateTextureFromSurface(ren,surfacetext);
-    SDL_FreeSurface(surfacetext);
-
 
     //rectangle for menu background
     SDL_Rect rect1;
     rect1.x = 800;
     rect1.y = 0;
     rect1.h = 900;
-    rect1.w = 240;
+    rect1.w = 500;
 
-    //rendering menu background
+
+    //render iamge
+    SDL_Texture * ourPNG = SDL_CreateTextureFromSurface(ren,image);
+    SDL_Texture *play = SDL_CreateTextureFromSurface(ren,button);
     SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
     SDL_RenderFillRect(ren, &rect1);
-
-    //background rectangle
-    SDL_RenderCopy(ren,texturetext,NULL,&rect);
-    SDL_RenderPresent(ren);
-
-    // adding color to screen
-    // SDL_Surface *screen = SDL_GetWindowSurface(window);
-    //  Uint32 color = SDL_MapRGB( screen->format,127,247,255 );
-    //  SDL_FillRect( screen ,NULL, color);
-    // SDL_UpdateWindowSurface( window );
+    SDL_RenderCopy(ren, ourPNG, NULL,&rectangle);
+    SDL_RenderCopy(ren, play, NULL, &rect);
     
+
+    SDL_RenderPresent(ren);
 }
 
 void Game::gameLoop(){
@@ -114,9 +95,7 @@ void Game::handleEvents(){
     while (SDL_PollEvent(&evnt))
     {
         if (evnt.type == SDL_QUIT)
-        {   
-
-            TTF_CloseFont(ourFont);
+        { 
             SDL_DestroyWindow(window);
             SDL_DestroyRenderer(ren);
             SDL_Quit();

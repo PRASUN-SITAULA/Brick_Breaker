@@ -7,13 +7,11 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Fri Aug 12 18:24:46 2022
+# Make data base, printed on Sun Aug 14 19:29:58 2022
 
 # Variables
  
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -35,9 +33,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15032_WWCOOVPGFFIDINHC
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4388_QGJEEVZLICASWAUX
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -85,7 +81,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 15032
+VSCODE_PID = 4388
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -118,16 +114,13 @@ COMSPEC = C:\WINDOWS\system32\cmd.exe
 WINDIR = C:\WINDOWS
 # environment
 MAKELEVEL := 0
- 
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
 PATH = /c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/mingw64/bin:/mingw64:/usr/bin:/c/Program Files/Git/cmd:/c/Users/user/AppData/Local/Microsoft/WindowsApps:/c/Users/user/AppData/Local/Programs/Microsoft VS Code/bin
 # environment
 ZES_ENABLE_SYSMAN = 1
- 
 # environment
- 
 COMPUTERNAME = PRASUN
 # default
 MAKEFILES := 
@@ -217,7 +210,7 @@ INCLUDE_PATHS = -Iinclude
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
  
-# Load=100/1024=10%, Rehash=0, Collisions=15/138=11%
+# Load=98/1024=10%, Rehash=0, Collisions=14/136=10%
 
 # Pattern-specific Variable Values
 
@@ -226,9 +219,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # Directories
 
 # src (device 3269702283, inode 3096224744005559): 6 files, no impossibilities.
-# . (device 3269702283, inode 5348024557522936): 21 files, no impossibilities.
+# . (device 3269702283, inode 5348024557522936): 23 files, no impossibilities.
 
-# 27 files, no impossibilities in 2 directories.
+# 29 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -252,7 +245,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-12 15:40:06.0742774
+#  Last modified 2022-08-14 19:28:11.1822409
 #  File has been updated.
 #  Successfully updated.
 
@@ -280,6 +273,7 @@ all: src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 # automatic
 # | := 
 # variable set hash-table stats:
+ 
 # Load=8/32=25%, Rehash=0, Collisions=8/18=44%
 #  recipe to execute (from 'Makefile', line 30):
 	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) -o $(OBJ_NAME) $(LINKER_FLAGS)
@@ -294,7 +288,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-04 14:06:12.9881706
+#  Last modified 2022-08-14 18:38:38.8883165
 #  File has been updated.
 #  Successfully updated.
 
@@ -307,7 +301,7 @@ src/game.cpp:
 # Not a target:
 src/newlevel.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-12 15:27:07.7268297
+#  Last modified 2022-08-14 19:01:09.9354897
 #  File has been updated.
 #  Successfully updated.
 
@@ -319,13 +313,12 @@ src/newlevel.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 319 B / avg = 9 B
- 
-# current buf: size = 8162 B / used = 319 B / count = 33 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 35 / storage = 343 B / avg = 9 B
+# current buf: size = 8162 B / used = 343 B / count = 35 / avg = 9 B
 
-# strcache performance: lookups = 43 / hit rate = 23%
+# strcache performance: lookups = 45 / hit rate = 22%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=0/43=0%
-# Finished Make data base on Fri Aug 12 18:24:46 2022
+# Load=35/8192=0%, Rehash=0, Collisions=0/45=0%
+# Finished Make data base on Sun Aug 14 19:29:58 2022
 
  

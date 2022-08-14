@@ -27,7 +27,7 @@ SDL_Color _color;
 
 
 int _framecount, _timerfps, _lastframe, _fps ,_score;
-SDL_Rect _paddle, _ball, _lives, _brick, _srect={750,10,25,25}, _buttonrect={0,0,120,43}, _imagerect={0,0,1024,600};
+SDL_Rect _paddle, _ball, _lives, _brick, _srect={750,10,25,25}, _buttonrect={0,0,120,43}, _imagerect={0,0,1024,600}, _unbreakrect={200,100,621,170};
 float _velY, _velX;
 int _livescount;
 bool _bricks[ROW*COL];
@@ -48,27 +48,39 @@ void NewLevel::resetBricks() {
 
 //to set bricks
 void NewLevel::setBricks(int i) {
-    _brick.x = (((i%COL)+1)*SPACING)+((i%COL)*_brick.w)-(SPACING/4);
-    _brick.y = _brick.h*3+(((i%ROW)+1)*SPACING)+((i%ROW)*_brick.h)-(SPACING/4);
+    if(i==8){
+        _brick.w = 0;
+        _brick.h = 0;
+    }
+    else{
+        _brick.w = (width-(SPACING*COL))/COL;
+        _brick.h = 22;
+        _brick.x = (((i%COL)+1)*SPACING)+((i%COL)*_brick.w)-(SPACING/4);
+        _brick.y = _brick.h*3+(((i%ROW)+1)*SPACING)+((i%ROW)*_brick.h)-(SPACING/4);
+
+    }
+    
 }
 
 //to write bricks and _paddle and _ball
 void NewLevel::write(std::string text,std::string _score, int x, int y) {
-    SDL_Surface *surface,*surface1,*image,*button;
-    SDL_Texture *texture,*texture1,*texturebutton,*textureimg;
+    SDL_Surface *surface,*surface1,*image,*button,*unbreakable;
+    SDL_Texture *texture,*texture1,*texturebutton,*textureimg,*textureunbreakable;
     const char* t=text.c_str();
     const char* s=_score.c_str();
     surface = TTF_RenderText_Blended(_font, t, _color);
     //surface1 for _score
     surface1 = TTF_RenderText_Blended(_font, s, _color);
-    //
     //surface for button;
-    button = IMG_Load("./backbutton.png");
+    button = IMG_Load("images/back.png");
     //surface for image
-    image = IMG_Load("./brick.jpg");
+    image = IMG_Load("images/brick.jpg");
+    //surface for unbreakable brick
+    unbreakable = IMG_Load("images/unbreakable.png");
     
     textureimg = SDL_CreateTextureFromSurface(_renderer, image);
     texturebutton = SDL_CreateTextureFromSurface(_renderer, button);
+    textureunbreakable = SDL_CreateTextureFromSurface(_renderer, unbreakable);
     texture = SDL_CreateTextureFromSurface(_renderer, surface);
     texture1 = SDL_CreateTextureFromSurface(_renderer, surface1);
     _lives.w = surface->w;
@@ -80,16 +92,19 @@ void NewLevel::write(std::string text,std::string _score, int x, int y) {
     SDL_FreeSurface(surface);
     SDL_FreeSurface(surface1);
     SDL_FreeSurface(button);
+    SDL_FreeSurface(unbreakable);
     
     SDL_RenderCopy(_renderer, textureimg, NULL, &_imagerect);
     SDL_RenderCopy(_renderer, texturebutton, NULL, &_buttonrect);
-    SDL_RenderCopy(_renderer, texture, NULL, &_lives);
     SDL_RenderCopy(_renderer, texture1, NULL, &_srect);
+    SDL_RenderCopy(_renderer, textureunbreakable, NULL, &_unbreakrect);
+    SDL_RenderCopy(_renderer, texture, NULL, &_lives);
     
     SDL_DestroyTexture(texture);
     SDL_DestroyTexture(texture1);
     SDL_DestroyTexture(texturebutton);
     SDL_DestroyTexture(textureimg);
+    SDL_DestroyTexture(textureunbreakable);
 }
 
 //Updates the status
@@ -187,11 +202,11 @@ void NewLevel::gameLoop(){
         if(SDL_CreateWindowAndRenderer(width, height, 0, &_window, &_renderer) < 0) std::cout<< "Failed at SDL_CreateWindowAnd_renderer()" << std::endl;
         SDL_SetWindowTitle(_window, "Brick Breaker");
 
-        int imgflags = IMG_INIT_JPG;
+        int imgflags = IMG_INIT_JPG||IMG_INIT_PNG;
         TTF_Init();
         IMG_Init(imgflags);
-        _font = TTF_OpenFont("font.TTF", FONT_SIZE);
-        _textfont = TTF_OpenFont("font.TTF",100);
+        _font = TTF_OpenFont("ALGER.TTF", FONT_SIZE);
+        _textfont = TTF_OpenFont("ALGER.TTF",100);
         
         _running = 1;
         static int lastTime=0;

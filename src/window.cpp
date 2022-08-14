@@ -27,7 +27,7 @@ TTF_Font* font, *textfont;
 SDL_Color color;
 
 int frameCount, timerFPS, lastFrame, fps ,score;
-SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={0,0,120,43}, imagerect={0,0,1024,600};
+SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={10,0,51,37}, nextrect={55,0,51,37}, imagerect={0,0,1024,600};
 float velY, velX;
 int livesCount;
 bool bricks[ROW*COL];
@@ -48,27 +48,37 @@ void Window::resetBricks() {
 
 //to set bricks
 void Window::setBricks(int i) {
+    if(i==1||i==5||i==7||i==9||i==12||i==15||i==21||i==27||i==30){
+        brick.w = 0;
+        brick.h = 0;
+    }
+    else{
+        brick.w =  (width-(SPACING*COL))/COL;
+        brick.h = 22;
         brick.x = (((i%COL)+1)*SPACING)+((i%COL)*brick.w)-(SPACING/3);
         brick.y = brick.h*3+(((i%ROW)+1)*SPACING)+((i%ROW)*brick.h)-(SPACING/2);
+    }
 }
 
 //to write bricks and paddle and ball
 void Window::write(std::string text,std::string score, int x, int y) {
-    SDL_Surface *surface,*surface1,*image,*button;
-    SDL_Texture *texture,*texture1,*texturebutton,*textureimg;
+    SDL_Surface *surface,*surface1,*image,*resetbutton,*nextbutton;
+    SDL_Texture *texture,*texture1,*textureresetbutton,*textureimg, *texturenextbutton;
     const char* t=text.c_str();
     const char* s=score.c_str();
     surface = TTF_RenderText_Blended(font, t, color);
     //surface1 for score
-    surface1 = TTF_RenderText_Blended(font, s, color);
+    surface1 = TTF_RenderText_Blended(textfont, s, color);
     //
-    //surface for button;
-    button = IMG_Load("./button.png");
+    //surface for reset button;
+    resetbutton = IMG_Load("images/reset.png");
     //surface for image
-    image = IMG_Load("./brick.jpg");
+    image = IMG_Load("images/brick.jpg");
+    nextbutton = IMG_Load("images/next.png");
     
     textureimg = SDL_CreateTextureFromSurface(renderer, image);
-    texturebutton = SDL_CreateTextureFromSurface(renderer, button);
+    textureresetbutton = SDL_CreateTextureFromSurface(renderer, resetbutton);
+    texturenextbutton = SDL_CreateTextureFromSurface(renderer, nextbutton);
     texture = SDL_CreateTextureFromSurface(renderer, surface);
     texture1 = SDL_CreateTextureFromSurface(renderer, surface1);
     lives.w = surface->w;
@@ -79,16 +89,19 @@ void Window::write(std::string text,std::string score, int x, int y) {
     SDL_FreeSurface(image);
     SDL_FreeSurface(surface);
     SDL_FreeSurface(surface1);
-    SDL_FreeSurface(button);
+    SDL_FreeSurface(resetbutton);
+    SDL_FreeSurface(nextbutton);
     
     SDL_RenderCopy(renderer, textureimg, NULL, &imagerect);
-    SDL_RenderCopy(renderer, texturebutton, NULL, &buttonrect);
+    SDL_RenderCopy(renderer, textureresetbutton, NULL, &buttonrect);
+    SDL_RenderCopy(renderer, texturenextbutton, NULL, &nextrect);
     SDL_RenderCopy(renderer, texture, NULL, &lives);
     SDL_RenderCopy(renderer, texture1, NULL, &srect);
     
     SDL_DestroyTexture(texture);
     SDL_DestroyTexture(texture1);
-    SDL_DestroyTexture(texturebutton);
+    SDL_DestroyTexture(textureresetbutton);
+    SDL_DestroyTexture(texturenextbutton);
     SDL_DestroyTexture(textureimg);
 }
 
@@ -113,7 +126,7 @@ void Window::update() {
     if(paddle.x+paddle.w>width) paddle.x = width-paddle.w;
 
     bool reset=1;
-    for(int i=0; i<COL*ROW; i++) {
+    for(int i=0 ; i<COL*ROW; i++) {
         setBricks(i);
         if(SDL_HasIntersection(&ball, &brick) && bricks[i]) {
             score += 1;
@@ -151,8 +164,6 @@ void Window::render() {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &paddle);
     SDL_RenderFillRect(renderer, &ball);
-    
-
     for(int i=0; i<COL*ROW; i++) {
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         if(i%2 == 0)SDL_SetRenderDrawColor(renderer, 0,255, 255, 125);
@@ -162,7 +173,6 @@ void Window::render() {
             SDL_RenderFillRect(renderer, &brick);
         }
     }
-    
     SDL_RenderPresent(renderer);
 }
 
@@ -175,11 +185,9 @@ Window::Window(){
 Window::~Window(){};
 
 void Window::run(){
-    //init("Bricks Breaker", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,width, height ,SDL_WINDOW_SHOWN);
     gameLoop();
 }
     
-
 void Window::gameLoop(){
     while(windowState != WindowState::EXIT){
         if(SDL_Init(SDL_INIT_EVERYTHING) < 0) std::cout << "Failed at SDL_Init()" << std::endl;
@@ -189,8 +197,8 @@ void Window::gameLoop(){
         int imgflags = IMG_INIT_JPG;
         TTF_Init();
         IMG_Init(imgflags);
-        font = TTF_OpenFont("font.TTF", FONT_SIZE);
-        textfont = TTF_OpenFont("font.TTF",100);
+        font = TTF_OpenFont("ALGER.TTF", FONT_SIZE);
+        textfont = TTF_OpenFont("ALGER.TTF",40);
         
         running = 1;
         static int lastTime=0;
@@ -240,10 +248,22 @@ void Window::handleEvents(){
 
             if (SDL_PointInRect(&mousePosition, &buttonrect)) {
                 std::cout<<"mouse is pressed"<<std::endl;
+                resetBricks();
+            }
+        }
+
+        if(SDL_MOUSEBUTTONDOWN == event.type)
+        {
+            SDL_Point mousePosition;
+            // Mouse click coords from event handler
+            mousePosition.x = event.motion.x; 
+            mousePosition.y = event.motion.y;
+
+            if (SDL_PointInRect(&mousePosition, &nextrect)) {
+                std::cout<<"mouse is pressed"<<std::endl;
                 NewLevel nl;
                 nl.run();
             }
-        
         }
     }
 }
