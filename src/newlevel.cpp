@@ -27,7 +27,7 @@ SDL_Color _color;
 
 
 int _framecount, _timerfps, _lastframe, _fps ,_score;
-SDL_Rect _paddle, _ball, _lives, _brick, _srect={750,10,25,25}, _buttonrect={0,0,120,43}, _imagerect={0,0,1024,600}, _unbreakrect={200,100,621,170};
+SDL_Rect _paddle, _ball, _lives, _brick, _srect={750,10,25,25}, _buttonrect={0,0,51,43}, _imagerect={0,0,1024,600}, _unbreakrect={130,170,230,40};
 float _velY, _velX;
 int _livescount;
 bool _bricks[ROW*COL];
@@ -48,7 +48,7 @@ void NewLevel::resetBricks() {
 
 //to set bricks
 void NewLevel::setBricks(int i) {
-    if(i==8){
+    if(i==2 || i==3 || i==18 || i==42 || i==43 || i==67 || i==82 || i==83){
         _brick.w = 0;
         _brick.h = 0;
     }
@@ -57,7 +57,6 @@ void NewLevel::setBricks(int i) {
         _brick.h = 22;
         _brick.x = (((i%COL)+1)*SPACING)+((i%COL)*_brick.w)-(SPACING/4);
         _brick.y = _brick.h*3+(((i%ROW)+1)*SPACING)+((i%ROW)*_brick.h)-(SPACING/4);
-
     }
     
 }
@@ -129,7 +128,8 @@ void NewLevel::update() {
 
     bool reset = 1;
     int count =0;
-    for(int i=0; i<COL*ROW; i++) {
+    for(int i=0; i<COL*ROW; i++)
+    {
         setBricks(i);
         if(SDL_HasIntersection(&_ball, &_brick) && _bricks[i]) {
             _score += 1;
@@ -139,8 +139,14 @@ void NewLevel::update() {
             if(_ball.y <= _brick.y) {_velY=-_velY; _ball.y-=20;}
             if(_ball.y >= _brick.y) {_velY=-_velY; _ball.y+=20;}
         }
-        if(_bricks[i]) reset=0;
+        if(SDL_HasIntersection(&_ball, &_unbreakrect)) {
+            if(_ball.x >= _brick.x) {_velX=-_velX; _ball.x-=20;}
+            if(_ball.x <= _brick.x) {_velX=-_velX; _ball.x+=20;}
+            if(_ball.y <= _brick.y) {_velY=-_velY; _ball.y-=20;}
+            if(_ball.y >= _brick.y) {_velY=-_velY; _ball.y+=20;}
         }
+        if(_bricks[i]) reset=0;
+    }
     if(reset) resetBricks();
 }
 
@@ -170,9 +176,9 @@ void NewLevel::render() {
     
 
     for(int i=0; i<COL*ROW; i++) {
-        SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 255);
-        if(i%2 == 0)SDL_SetRenderDrawColor(_renderer, 0,255, 255, 125);
-        if(i%3 == 0)SDL_SetRenderDrawColor(_renderer,0,255,0,0);
+        SDL_SetRenderDrawColor(_renderer, 250, 95, 85, 255);
+        if(i%2 == 0)SDL_SetRenderDrawColor(_renderer, 255,234, 0, 255);
+        if(i%3 == 0)SDL_SetRenderDrawColor(_renderer,127, 0, 255,255);
         if(_bricks[i]) {
             setBricks(i);
             SDL_RenderFillRect(_renderer, &_brick);

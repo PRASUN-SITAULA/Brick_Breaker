@@ -99,7 +99,6 @@ void Game::handleEvents(){
             SDL_DestroyWindow(window);
             SDL_DestroyRenderer(ren);
             SDL_Quit();
-            TTF_Quit();
         }
     
 

@@ -7,11 +7,12 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sun Aug 14 19:29:58 2022
+# Make data base, printed on Mon Aug 15 20:27:26 2022
 
 # Variables
- 
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -33,7 +34,9 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4388_QGJEEVZLICASWAUX
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11784_LHSBQEUYSCRYFMFF
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -81,7 +84,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 4388
+VSCODE_PID = 11784
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -209,8 +212,7 @@ INCLUDE_PATHS = -Iinclude
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
- 
-# Load=98/1024=10%, Rehash=0, Collisions=14/136=10%
+# Load=100/1024=10%, Rehash=0, Collisions=15/138=11%
 
 # Pattern-specific Variable Values
 
@@ -219,9 +221,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # Directories
 
 # src (device 3269702283, inode 3096224744005559): 6 files, no impossibilities.
-# . (device 3269702283, inode 5348024557522936): 23 files, no impossibilities.
+# . (device 3269702283, inode 5348024557522936): 17 files, no impossibilities.
 
-# 29 files, no impossibilities in 2 directories.
+# 23 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -245,7 +247,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-14 19:28:11.1822409
+#  Last modified 2022-08-15 11:51:08.1086998
 #  File has been updated.
 #  Successfully updated.
 
@@ -273,7 +275,6 @@ all: src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 # automatic
 # | := 
 # variable set hash-table stats:
- 
 # Load=8/32=25%, Rehash=0, Collisions=8/18=44%
 #  recipe to execute (from 'Makefile', line 30):
 	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) -o $(OBJ_NAME) $(LINKER_FLAGS)
@@ -288,7 +289,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-14 18:38:38.8883165
+#  Last modified 2022-08-15 11:49:19.0277237
 #  File has been updated.
 #  Successfully updated.
 
@@ -301,7 +302,7 @@ src/game.cpp:
 # Not a target:
 src/newlevel.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-14 19:01:09.9354897
+#  Last modified 2022-08-15 13:56:18.2082614
 #  File has been updated.
 #  Successfully updated.
 
@@ -313,12 +314,12 @@ src/newlevel.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 35 / storage = 343 B / avg = 9 B
-# current buf: size = 8162 B / used = 343 B / count = 35 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 29 / storage = 269 B / avg = 9 B
+# current buf: size = 8162 B / used = 269 B / count = 29 / avg = 9 B
 
-# strcache performance: lookups = 45 / hit rate = 22%
+# strcache performance: lookups = 39 / hit rate = 25%
 # hash-table stats:
-# Load=35/8192=0%, Rehash=0, Collisions=0/45=0%
-# Finished Make data base on Sun Aug 14 19:29:58 2022
+# Load=29/8192=0%, Rehash=0, Collisions=0/39=0%
+# Finished Make data base on Mon Aug 15 20:27:26 2022
 
  

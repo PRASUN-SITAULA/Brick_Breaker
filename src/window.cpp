@@ -27,7 +27,7 @@ TTF_Font* font, *textfont;
 SDL_Color color;
 
 int frameCount, timerFPS, lastFrame, fps ,score;
-SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={10,0,51,37}, nextrect={55,0,51,37}, imagerect={0,0,1024,600};
+SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={0,0,51,37}, nextrect={55,0,51,37}, imagerect={0,0,1024,600};
 float velY, velX;
 int livesCount;
 bool bricks[ROW*COL];
@@ -198,7 +198,7 @@ void Window::gameLoop(){
         TTF_Init();
         IMG_Init(imgflags);
         font = TTF_OpenFont("ALGER.TTF", FONT_SIZE);
-        textfont = TTF_OpenFont("ALGER.TTF",40);
+        textfont = TTF_OpenFont("ALGER.TTF",45);
         
         running = 1;
         static int lastTime=0;
@@ -228,7 +228,8 @@ void Window::gameLoop(){
 
 void Window::handleEvents(){
     SDL_Event event;
-    while(SDL_PollEvent(&event)){
+    while(SDL_PollEvent(&event))
+    {
         if(event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE)
         {
             windowState = WindowState::EXIT;
