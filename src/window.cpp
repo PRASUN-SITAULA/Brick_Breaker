@@ -1,5 +1,6 @@
 #include <headers/window.h>
 #include <headers/newlevel.h>
+#include <headers/games.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -27,7 +28,7 @@ TTF_Font* font, *textfont;
 SDL_Color color;
 
 int frameCount, timerFPS, lastFrame, fps ,score;
-SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={0,0,51,37}, nextrect={55,0,51,37}, imagerect={0,0,1024,600};
+SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={55,0,51,37}, nextrect={110,0,51,37}, imagerect={0,0,1024,600}, homerect={0 ,0 ,51,37};
 float velY, velX;
 int livesCount;
 bool bricks[ROW*COL];
@@ -62,8 +63,8 @@ void Window::setBricks(int i) {
 
 //to write bricks and paddle and ball
 void Window::write(std::string text,std::string score, int x, int y) {
-    SDL_Surface *surface,*surface1,*image,*resetbutton,*nextbutton;
-    SDL_Texture *texture,*texture1,*textureresetbutton,*textureimg, *texturenextbutton;
+    SDL_Surface *surface,*surface1,*image,*resetbutton,*nextbutton,*homebutton;
+    SDL_Texture *texture,*texture1,*textureresetbutton,*textureimg, *texturenextbutton,*texturehome;
     const char* t=text.c_str();
     const char* s=score.c_str();
     surface = TTF_RenderText_Blended(font, t, color);
@@ -71,16 +72,20 @@ void Window::write(std::string text,std::string score, int x, int y) {
     surface1 = TTF_RenderText_Blended(textfont, s, color);
     //
     //surface for reset button;
-    resetbutton = IMG_Load("images/reset.png");
+    
     //surface for image
     image = IMG_Load("images/brick.jpg");
+    resetbutton = IMG_Load("images/reset.png");
     nextbutton = IMG_Load("images/next.png");
+    homebutton = IMG_Load("images/home.png");
     
     textureimg = SDL_CreateTextureFromSurface(renderer, image);
     textureresetbutton = SDL_CreateTextureFromSurface(renderer, resetbutton);
     texturenextbutton = SDL_CreateTextureFromSurface(renderer, nextbutton);
+    texturehome = SDL_CreateTextureFromSurface(renderer, homebutton);
     texture = SDL_CreateTextureFromSurface(renderer, surface);
     texture1 = SDL_CreateTextureFromSurface(renderer, surface1);
+
     lives.w = surface->w;
     lives.h = surface->h;
     lives.x = x-lives.w;
@@ -91,10 +96,12 @@ void Window::write(std::string text,std::string score, int x, int y) {
     SDL_FreeSurface(surface1);
     SDL_FreeSurface(resetbutton);
     SDL_FreeSurface(nextbutton);
+    SDL_FreeSurface(homebutton);
     
     SDL_RenderCopy(renderer, textureimg, NULL, &imagerect);
     SDL_RenderCopy(renderer, textureresetbutton, NULL, &buttonrect);
     SDL_RenderCopy(renderer, texturenextbutton, NULL, &nextrect);
+    SDL_RenderCopy(renderer, texturehome, NULL, &homerect);
     SDL_RenderCopy(renderer, texture, NULL, &lives);
     SDL_RenderCopy(renderer, texture1, NULL, &srect);
     
@@ -102,6 +109,7 @@ void Window::write(std::string text,std::string score, int x, int y) {
     SDL_DestroyTexture(texture1);
     SDL_DestroyTexture(textureresetbutton);
     SDL_DestroyTexture(texturenextbutton);
+    SDL_DestroyTexture(texturehome);
     SDL_DestroyTexture(textureimg);
 }
 
@@ -240,31 +248,35 @@ void Window::handleEvents(){
             TTF_Quit();
         }
 
-        if(SDL_MOUSEBUTTONDOWN == event.type)
-        {
+        if(SDL_MOUSEBUTTONDOWN == event.type && event.button.state == SDL_PRESSED)
+    {
             SDL_Point mousePosition;
             // Mouse click coords from event handler
             mousePosition.x = event.motion.x; 
             mousePosition.y = event.motion.y;
 
             if (SDL_PointInRect(&mousePosition, &buttonrect)) {
-                std::cout<<"mouse is pressed"<<std::endl;
+                std::cout<<"reset button is pressed"<<std::endl;
                 resetBricks();
             }
-        }
-
-        if(SDL_MOUSEBUTTONDOWN == event.type)
-        {
-            SDL_Point mousePosition;
-            // Mouse click coords from event handler
-            mousePosition.x = event.motion.x; 
-            mousePosition.y = event.motion.y;
-
             if (SDL_PointInRect(&mousePosition, &nextrect)) {
-                std::cout<<"mouse is pressed"<<std::endl;
+                std::cout<<"nextbutton is pressed"<<std::endl;
                 NewLevel nl;
                 nl.run();
             }
+            if (SDL_PointInRect(&mousePosition, &homerect)) {
+                std::cout<<"homebutton is pressed"<<std::endl;
+                Game g;
+                g.run();
+            }
         }
+            
+        // if(SDL_MOUSEBUTTONDOWN == event.type  && event.button.clicks == 1)
+        // {
+        //     SDL_Point mousePosition;
+        //     // Mouse click coords from event handler
+        //     mousePosition.x = event.motion.x; 
+        //     mousePosition.y = event.motion.y;  
+        // }
     }
 }

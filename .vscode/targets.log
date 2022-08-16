@@ -3,13 +3,15 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # Built for x86_64-pc-msys
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+ 
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Mon Aug 15 20:27:26 2022
+# Make data base, printed on Tue Aug 16 10:57:07 2022
 
 # Variables
+ 
 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
@@ -34,7 +36,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11784_LHSBQEUYSCRYFMFF
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16388_QFMTZYFVKJZKSDCO
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -84,7 +86,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11784
+VSCODE_PID = 16388
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -149,6 +151,7 @@ PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
 +F = $(notdir $+)
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+ 
 # environment
 USERDOMAIN = PRASUN
 # 'override' directive
@@ -212,6 +215,7 @@ INCLUDE_PATHS = -Iinclude
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
+ 
 # Load=100/1024=10%, Rehash=0, Collisions=15/138=11%
 
 # Pattern-specific Variable Values
@@ -320,6 +324,6 @@ src/newlevel.cpp:
 # strcache performance: lookups = 39 / hit rate = 25%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=0/39=0%
-# Finished Make data base on Mon Aug 15 20:27:26 2022
+# Finished Make data base on Tue Aug 16 10:57:07 2022
 
  

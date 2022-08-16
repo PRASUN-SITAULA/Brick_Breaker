@@ -20,7 +20,7 @@ void Game::run(){
     gameLoop();
 }
 
-SDL_Rect rect = { 830, 0, 215, 215};
+SDL_Rect rect = { 830, 0, 125, 75}, quitrect ={830, 100 ,125, 75};
 
 void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING); //initialize sdl
@@ -45,7 +45,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     }
 
     //load image
-    SDL_Surface *image,*button;
+    SDL_Surface *image,*button, *quit;
     image = IMG_Load("images/unnamed.png");
     if(!image){
         std::cout<<"Image not loaded"<<std::endl;
@@ -54,6 +54,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     if(!button){
         std::cout<<"button not loaded"<<std::endl;
     }
+    quit = IMG_Load("images/quit.png");
 
     //rectangle image background
     SDL_Rect rectangle;
@@ -73,10 +74,14 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     //render iamge
     SDL_Texture * ourPNG = SDL_CreateTextureFromSurface(ren,image);
     SDL_Texture *play = SDL_CreateTextureFromSurface(ren,button);
+    SDL_Texture *texturequit = SDL_CreateTextureFromSurface(ren,quit);
+
     SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
     SDL_RenderFillRect(ren, &rect1);
+
     SDL_RenderCopy(ren, ourPNG, NULL,&rectangle);
     SDL_RenderCopy(ren, play, NULL, &rect);
+    SDL_RenderCopy(ren,texturequit, NULL, &quitrect);
     
 
     SDL_RenderPresent(ren);
@@ -114,9 +119,14 @@ void Game::handleEvents(){
                 SDL_DestroyWindow(window);
                 Window window;
                 window.run();
-
             }
-        
+
+            if(SDL_PointInRect(&mousePosition ,&quitrect)){
+                std::cout<<"quit button is pressed"<<std::endl;
+                SDL_DestroyWindow(window);
+                SDL_DestroyRenderer(ren);
+                SDL_Quit();
+            }
         }
     }
 
