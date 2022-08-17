@@ -3,12 +3,11 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # Built for x86_64-pc-msys
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
- 
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Tue Aug 16 10:57:07 2022
+# Make data base, printed on Wed Aug 17 10:48:22 2022
 
 # Variables
  
@@ -18,6 +17,7 @@ FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
+ 
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\user
@@ -36,7 +36,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16388_QFMTZYFVKJZKSDCO
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_8280_DWQOYDUWPHVHZRZR
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -66,7 +66,7 @@ ONEDRIVE = C:\Users\user\OneDrive
 # makefile
 CURDIR := /c/Users/user/Desktop/C++ Project
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -86,7 +86,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 16388
+VSCODE_PID = 8280
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -151,7 +151,6 @@ PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
 +F = $(notdir $+)
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
- 
 # environment
 USERDOMAIN = PRASUN
 # 'override' directive
@@ -217,6 +216,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
  
 # Load=100/1024=10%, Rehash=0, Collisions=15/138=11%
+ 
 
 # Pattern-specific Variable Values
 
@@ -251,7 +251,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-15 11:51:08.1086998
+#  Last modified 2022-08-16 12:29:20.3504267
 #  File has been updated.
 #  Successfully updated.
 
@@ -279,7 +279,9 @@ all: src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 # automatic
 # | := 
 # variable set hash-table stats:
+ 
 # Load=8/32=25%, Rehash=0, Collisions=8/18=44%
+ 
 #  recipe to execute (from 'Makefile', line 30):
 	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) -o $(OBJ_NAME) $(LINKER_FLAGS)
 
@@ -293,7 +295,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-15 11:49:19.0277237
+#  Last modified 2022-08-16 13:06:11.0326654
 #  File has been updated.
 #  Successfully updated.
 
@@ -311,6 +313,7 @@ src/newlevel.cpp:
 #  Successfully updated.
 
 # files hash-table stats:
+ 
 # Load=8/1024=1%, Rehash=0, Collisions=0/24=0%
 # VPATH Search Paths
 
@@ -324,6 +327,6 @@ src/newlevel.cpp:
 # strcache performance: lookups = 39 / hit rate = 25%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=0/39=0%
-# Finished Make data base on Tue Aug 16 10:57:07 2022
+# Finished Make data base on Wed Aug 17 10:48:22 2022
 
  

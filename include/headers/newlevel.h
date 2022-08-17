@@ -28,4 +28,6 @@ class NewLevel{
     LevelState levelState;
     public:
     static SDL_Renderer *renderer;
+
 };
+

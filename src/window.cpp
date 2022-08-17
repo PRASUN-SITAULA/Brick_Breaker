@@ -1,6 +1,6 @@
 #include <headers/window.h>
-#include <headers/newlevel.h>
 #include <headers/games.h>
+#include <headers/newlevel.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -28,7 +28,7 @@ TTF_Font* font, *textfont;
 SDL_Color color;
 
 int frameCount, timerFPS, lastFrame, fps ,score;
-SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={55,0,51,37}, nextrect={110,0,51,37}, imagerect={0,0,1024,600}, homerect={0 ,0 ,51,37};
+SDL_Rect paddle, ball, lives, brick, srect={750,10,25,25}, buttonrect={55,0,51,43}, nextrect={110,0,51,43}, imagerect={0,0,1024,600}, homerect={0 ,0 ,51,43};
 float velY, velX;
 int livesCount;
 bool bricks[ROW*COL];
@@ -249,7 +249,7 @@ void Window::handleEvents(){
         }
 
         if(SDL_MOUSEBUTTONDOWN == event.type && event.button.state == SDL_PRESSED)
-    {
+        {
             SDL_Point mousePosition;
             // Mouse click coords from event handler
             mousePosition.x = event.motion.x; 
@@ -261,22 +261,20 @@ void Window::handleEvents(){
             }
             if (SDL_PointInRect(&mousePosition, &nextrect)) {
                 std::cout<<"nextbutton is pressed"<<std::endl;
+                TTF_CloseFont(font);
+                SDL_DestroyWindow(window);
+                SDL_DestroyRenderer(renderer);
                 NewLevel nl;
                 nl.run();
             }
             if (SDL_PointInRect(&mousePosition, &homerect)) {
                 std::cout<<"homebutton is pressed"<<std::endl;
+                TTF_CloseFont(font);
+                SDL_DestroyWindow(window);
+                SDL_DestroyRenderer(renderer);
                 Game g;
                 g.run();
             }
         }
-            
-        // if(SDL_MOUSEBUTTONDOWN == event.type  && event.button.clicks == 1)
-        // {
-        //     SDL_Point mousePosition;
-        //     // Mouse click coords from event handler
-        //     mousePosition.x = event.motion.x; 
-        //     mousePosition.y = event.motion.y;  
-        // }
     }
 }

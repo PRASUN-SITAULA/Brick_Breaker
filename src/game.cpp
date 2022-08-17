@@ -20,7 +20,7 @@ void Game::run(){
     gameLoop();
 }
 
-SDL_Rect rect = { 830, 0, 125, 75}, quitrect ={830, 100 ,125, 75};
+SDL_Rect rect = { 870, 0, 125, 75}, quitrect ={870, 100 ,125, 75};
 
 void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING); //initialize sdl
@@ -38,7 +38,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
 
     
     //initialize image
-    int imgFlags = IMG_INIT_PNG;
+    int imgFlags = IMG_INIT_PNG ||IMG_INIT_JPG;
     int initstatus = IMG_Init(imgFlags);
     if((initstatus & flags)!=flags){
         std::cout<<"Failed to initialize SDL_image"<<std::endl;
@@ -46,7 +46,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
 
     //load image
     SDL_Surface *image,*button, *quit;
-    image = IMG_Load("images/unnamed.png");
+    image = IMG_Load("images/background.jpg");
     if(!image){
         std::cout<<"Image not loaded"<<std::endl;
     }
@@ -77,6 +77,9 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Texture *texturequit = SDL_CreateTextureFromSurface(ren,quit);
 
     SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
+    
+    
+    SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
     SDL_RenderFillRect(ren, &rect1);
 
     SDL_RenderCopy(ren, ourPNG, NULL,&rectangle);
@@ -117,6 +120,7 @@ void Game::handleEvents(){
             if (SDL_PointInRect(&mousePosition, &rect)) {
                 std::cout<<"mouse is pressed"<<std::endl;
                 SDL_DestroyWindow(window);
+                SDL_DestroyRenderer(ren);
                 Window window;
                 window.run();
             }
