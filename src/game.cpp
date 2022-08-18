@@ -77,9 +77,6 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Texture *texturequit = SDL_CreateTextureFromSurface(ren,quit);
 
     SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
-    
-    
-    SDL_SetRenderDrawBlendMode(ren, SDL_BLENDMODE_BLEND);
     SDL_RenderFillRect(ren, &rect1);
 
     SDL_RenderCopy(ren, ourPNG, NULL,&rectangle);
@@ -110,7 +107,7 @@ void Game::handleEvents(){
         }
     
 
-        if(SDL_MOUSEBUTTONDOWN == evnt.type)
+        if(SDL_MOUSEBUTTONUP == evnt.type)
         {
             SDL_Point mousePosition;
             // Mouse click coords from event handler

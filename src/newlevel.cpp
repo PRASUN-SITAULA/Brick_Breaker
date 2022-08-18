@@ -29,7 +29,7 @@ SDL_Color _color;
 
 int _framecount, _timerfps, _lastframe, _fps ,_score;
 SDL_Rect _paddle, _ball, _lives, _brick, _srect={750,10,25,25}, _buttonrect={110,0,51,43}, _imagerect={0,0,1024,600};
-SDL_Rect _unbreakbrick1={130,170,230,40},_unbreakbrick2={500,300,230,40},_resetrect={55,0,51,43},_homerect = {0,0,51,43};
+SDL_Rect _unbreakbrick1={130,150,230,45},_unbreakbrick2={500,300,230,40},_resetrect={55,0,51,43},_homerect = {0,0,51,43};
 float _velY, _velX;
 int _livescount;
 bool _bricks[ROW*COL];
@@ -65,7 +65,7 @@ void NewLevel:: setBricks(int i) {
 
 //to write bricks and _paddle and _ball
 void NewLevel:: write(std::string text,std::string _score, int x, int y) {
-    SDL_Surface *surface,*surface1,*image,*button,*resetbutton,*unbreakable,*unbreakable1,*homebutton;
+    SDL_Surface *surface,*surface1,*image,*button,*resetbutton,*unbreakable,*homebutton;
     SDL_Texture *texture,*texture1,*texturebutton,*textureimg,*textureresetbutton,*textureunbreakable, *textureunbreakable1,*texturehomebutton;
     const char* t=text.c_str();
     const char* s=_score.c_str();
@@ -78,7 +78,6 @@ void NewLevel:: write(std::string text,std::string _score, int x, int y) {
     image = IMG_Load("images/brick.jpg");
     //surface for unbreakable brick
     unbreakable = IMG_Load("images/unbreakable.png");
-    unbreakable1 = IMG_Load("images/unbreakable.png");
     resetbutton = IMG_Load("images/reset.png");
     homebutton = IMG_Load("images/home.png");
     
@@ -88,7 +87,7 @@ void NewLevel:: write(std::string text,std::string _score, int x, int y) {
     textureresetbutton = SDL_CreateTextureFromSurface(_renderer, resetbutton);
     texturehomebutton = SDL_CreateTextureFromSurface(_renderer, homebutton);
     textureunbreakable = SDL_CreateTextureFromSurface(_renderer, unbreakable);
-    textureunbreakable1 = SDL_CreateTextureFromSurface(_renderer, unbreakable1);
+    textureunbreakable1 = SDL_CreateTextureFromSurface(_renderer, unbreakable);
     texture = SDL_CreateTextureFromSurface(_renderer, surface);
     texture1 = SDL_CreateTextureFromSurface(_renderer, surface1);
 
@@ -103,7 +102,6 @@ void NewLevel:: write(std::string text,std::string _score, int x, int y) {
     SDL_FreeSurface(resetbutton);
     SDL_FreeSurface(button);
     SDL_FreeSurface(unbreakable);
-    SDL_FreeSurface(unbreakable1);
     SDL_FreeSurface(homebutton);
     
     SDL_RenderCopy(_renderer, textureimg, NULL, &_imagerect);
@@ -279,7 +277,7 @@ void NewLevel::handleEvents(){
         }
 
 
-         if(SDL_MOUSEBUTTONDOWN == event.type)
+         if(SDL_MOUSEBUTTONUP == event.type)
          {
             SDL_Point mousePosition;
             // Mouse click coords from event handler
@@ -291,13 +289,13 @@ void NewLevel::handleEvents(){
                 resetBricks();
             }
             if (SDL_PointInRect(&mousePosition, &_buttonrect)) {
-                std::cout<<"nextbutton is pressed"<<std::endl;
+                std::cout<<"backbutton is pressed"<<std::endl;
                 TTF_CloseFont(_font);
                 SDL_DestroyWindow(_window);
                 SDL_DestroyRenderer(_renderer);
                 TTF_Quit();
-                NewLevel nl;
-                nl.run();
+                Window w;
+                w.run();
             }
             if (SDL_PointInRect(&mousePosition, &_homerect)) {
                 std::cout<<"homebutton is pressed"<<std::endl;

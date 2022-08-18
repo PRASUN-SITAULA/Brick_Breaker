@@ -10,6 +10,9 @@ class Window{
     Window();
     ~Window();
     void run();
+
+    
+    private:
     void gameLoop();
     void handleEvents();
     void render();

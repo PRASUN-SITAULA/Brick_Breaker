@@ -248,7 +248,7 @@ void Window::handleEvents(){
             TTF_Quit();
         }
 
-        if(SDL_MOUSEBUTTONDOWN == event.type && event.button.state == SDL_PRESSED)
+        if(SDL_MOUSEBUTTONDOWN == event.type)
         {
             SDL_Point mousePosition;
             // Mouse click coords from event handler
