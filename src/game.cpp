@@ -6,7 +6,10 @@
 #include <SDL2/SDL_mixer.h>
 
 SDL_Renderer *Game::ren = nullptr;
-TTF_Font * ourFont;
+TTF_Font *ourFont;
+Mix_Music *music = nullptr;
+
+
 Game::Game(){
     window = nullptr;
     screenHeight = 600;
@@ -38,6 +41,14 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     ren = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
     
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT ,2, 4096)<0){
+        std::cout<<"SDL mixer cannot be initialized";
+    }
+
+    music= Mix_LoadMUS("sounds/music.wav");
+    if(music==NULL){
+        std::cout<<"Error producing music"<<std::endl;
+    }
     //initialize image
     int imgFlags = IMG_INIT_PNG ||IMG_INIT_JPG;
     int initstatus = IMG_Init(imgFlags);
@@ -102,13 +113,30 @@ void Game::gameLoop(){
 void Game::handleEvents(){
     SDL_Event evnt;
     while (SDL_PollEvent(&evnt))
-    {
+    { 
         if (evnt.type == SDL_QUIT)
         { 
             SDL_DestroyWindow(window);
             SDL_DestroyRenderer(ren);
             SDL_Quit();
         }
+        else if(evnt.type == SDL_KEYDOWN)
+        {
+            switch(evnt.key.keysym.sym)
+            {
+                case SDLK_1:
+                if(!Mix_PlayingMusic())
+                    { Mix_PlayMusic(music,-1);}
+                else if(Mix_PausedMusic()){
+                    Mix_ResumeMusic();
+                }
+                else{
+                    Mix_PauseMusic();
+                }
+            }
+                
+        }
+        
     
 
         if(SDL_MOUSEBUTTONUP == evnt.type)
@@ -130,6 +158,9 @@ void Game::handleEvents(){
                 std::cout<<"quit button is pressed"<<std::endl;
                 SDL_DestroyWindow(window);
                 SDL_DestroyRenderer(ren);
+                TTF_Quit();
+                Mix_Quit();
+                IMG_Quit();
                 SDL_Quit();
             }
         }

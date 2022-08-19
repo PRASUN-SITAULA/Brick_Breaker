@@ -1,24 +1,21 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
- 
 # Built for x86_64-pc-msys
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
+ 
 # There is NO WARRANTY, to the extent permitted by law.
  
 
- 
-# Make data base, printed on Fri Aug 19 12:15:18 2022
+# Make data base, printed on Fri Aug 19 14:31:38 2022
 
 # Variables
- 
 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
- 
 # environment
 LC_ALL = C
 # environment
@@ -38,7 +35,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7576_CIOECIBTSJMIBEJP
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17152_LABGKYCIYTEIMYBI
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -88,7 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 7576
+VSCODE_PID = 17152
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -103,7 +100,6 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 ONEDRIVECONSUMER = C:\Users\user\OneDrive
 # default
 MAKE_HOST := x86_64-pc-msys
- 
 # makefile (from 'Makefile', line 6)
 OBJS = src/*.cpp
 # environment
@@ -139,7 +135,6 @@ PROMPT = $P$G
 # environment
 LOGONSERVER = \\PRASUN
 # environment
- 
 USERNAME = user
 # environment
 COMMONPROGRAMFILES = C:\Program Files\Common Files
@@ -161,8 +156,6 @@ USERDOMAIN = PRASUN
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
-# environment
-__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := all
 # default
@@ -180,7 +173,6 @@ COMPILER_FLAGS = -w
 # environment
 APPDATA = C:\Users\user\AppData\Roaming
 # environment
- 
 HOMEDRIVE = C:
 # environment
 PROCESSOR_ARCHITECTURE = AMD64
@@ -199,7 +191,6 @@ VSCODE_IPC_HOOK = \\.\pipe\680802a3ebd40da3f83beb9d3e841b70-1.70.2-main-sock
 # environment
 TERM = xterm-256color
 # default
- 
 .RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
@@ -222,8 +213,7 @@ INCLUDE_PATHS = -Iinclude
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
- 
-# Load=101/1024=10%, Rehash=0, Collisions=15/139=11%
+# Load=100/1024=10%, Rehash=0, Collisions=15/138=11%
 
 # Pattern-specific Variable Values
 
@@ -232,9 +222,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # Directories
 
 # src (device 3269702283, inode 3096224744005559): 6 files, no impossibilities.
-# . (device 3269702283, inode 5348024557522936): 18 files, no impossibilities.
+# . (device 3269702283, inode 5348024557522936): 19 files, no impossibilities.
 
-# 24 files, no impossibilities in 2 directories.
+# 25 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -258,7 +248,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 11:11:29.7889159
+#  Last modified 2022-08-19 13:24:41.9459784
 #  File has been updated.
 #  Successfully updated.
 
@@ -300,7 +290,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 12:10:26.9906757
+#  Last modified 2022-08-19 14:29:55.7201159
 #  File has been updated.
 #  Successfully updated.
 
@@ -313,7 +303,7 @@ src/game.cpp:
 # Not a target:
 src/newlevel.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 12:10:55.0766169
+#  Last modified 2022-08-19 13:24:24.0775652
 #  File has been updated.
 #  Successfully updated.
 
@@ -325,12 +315,12 @@ src/newlevel.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 30 / storage = 284 B / avg = 9 B
-# current buf: size = 8162 B / used = 284 B / count = 30 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 291 B / avg = 9 B
+# current buf: size = 8162 B / used = 291 B / count = 31 / avg = 9 B
 
-# strcache performance: lookups = 40 / hit rate = 25%
+# strcache performance: lookups = 41 / hit rate = 24%
 # hash-table stats:
-# Load=30/8192=0%, Rehash=0, Collisions=0/40=0%
-# Finished Make data base on Fri Aug 19 12:15:18 2022
+# Load=31/8192=0%, Rehash=0, Collisions=0/41=0%
+# Finished Make data base on Fri Aug 19 14:31:38 2022
 
  
