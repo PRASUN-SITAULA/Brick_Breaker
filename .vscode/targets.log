@@ -5,19 +5,16 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Wed Aug 17 10:48:22 2022
+# Make data base, printed on Fri Aug 19 11:10:47 2022
 
 # Variables
- 
 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
- 
 LC_ALL = C
 # environment
 USERPROFILE = C:\Users\user
@@ -36,7 +33,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_8280_DWQOYDUWPHVHZRZR
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7576_CIOECIBTSJMIBEJP
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -50,7 +47,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\user\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
+VSCODE_CODE_CACHE_PATH = C:\Users\user\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LANG = C
 # default
@@ -66,7 +63,7 @@ ONEDRIVE = C:\Users\user\OneDrive
 # makefile
 CURDIR := /c/Users/user/Desktop/C++ Project
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -86,7 +83,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 8280
+VSCODE_PID = 7576
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -157,6 +154,8 @@ USERDOMAIN = PRASUN
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := all
 # default
@@ -188,7 +187,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = /c/Users/user/AppData/Local/Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\680802a3ebd40da3f83beb9d3e841b70-1.70.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\680802a3ebd40da3f83beb9d3e841b70-1.70.2-main-sock
 # environment
 TERM = xterm-256color
 # default
@@ -214,9 +213,7 @@ INCLUDE_PATHS = -Iinclude
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
- 
-# Load=100/1024=10%, Rehash=0, Collisions=15/138=11%
- 
+# Load=101/1024=10%, Rehash=0, Collisions=15/139=11%
 
 # Pattern-specific Variable Values
 
@@ -251,7 +248,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 12:29:20.3504267
+#  Last modified 2022-08-18 11:57:48.7506846
 #  File has been updated.
 #  Successfully updated.
 
@@ -279,9 +276,7 @@ all: src/Main.cpp src/game.cpp src/newlevel.cpp src/window.cpp
 # automatic
 # | := 
 # variable set hash-table stats:
- 
 # Load=8/32=25%, Rehash=0, Collisions=8/18=44%
- 
 #  recipe to execute (from 'Makefile', line 30):
 	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) -o $(OBJ_NAME) $(LINKER_FLAGS)
 
@@ -295,7 +290,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 13:06:11.0326654
+#  Last modified 2022-08-18 11:32:53.8377767
 #  File has been updated.
 #  Successfully updated.
 
@@ -308,12 +303,11 @@ src/game.cpp:
 # Not a target:
 src/newlevel.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-15 13:56:18.2082614
+#  Last modified 2022-08-18 11:34:19.7840133
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
- 
 # Load=8/1024=1%, Rehash=0, Collisions=0/24=0%
 # VPATH Search Paths
 
@@ -327,6 +321,6 @@ src/newlevel.cpp:
 # strcache performance: lookups = 39 / hit rate = 25%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=0/39=0%
-# Finished Make data base on Wed Aug 17 10:48:22 2022
+# Finished Make data base on Fri Aug 19 11:10:47 2022
 
  

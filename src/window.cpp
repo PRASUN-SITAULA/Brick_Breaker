@@ -261,19 +261,21 @@ void Window::handleEvents(){
             }
             if (SDL_PointInRect(&mousePosition, &nextrect)) {
                 std::cout<<"nextbutton is pressed"<<std::endl;
+                NewLevel nl;
+                nl.run();
                 TTF_CloseFont(font);
                 SDL_DestroyWindow(window);
                 SDL_DestroyRenderer(renderer);
-                NewLevel nl;
-                nl.run();
+              
             }
             if (SDL_PointInRect(&mousePosition, &homerect)) {
                 std::cout<<"homebutton is pressed"<<std::endl;
+                Game g;
+                g.run();
                 TTF_CloseFont(font);
                 SDL_DestroyWindow(window);
                 SDL_DestroyRenderer(renderer);
-                Game g;
-                g.run();
+                
             }
         }
     }

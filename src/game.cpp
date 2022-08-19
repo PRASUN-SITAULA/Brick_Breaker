@@ -20,7 +20,7 @@ void Game::run(){
     gameLoop();
 }
 
-SDL_Rect rect = { 870, 0, 125, 75}, quitrect ={870, 100 ,125, 75};
+SDL_Rect rect = { 835, 320, 125, 75}, quitrect ={835, 450 ,125, 75};
 
 void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING); //initialize sdl
@@ -45,7 +45,7 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     }
 
     //load image
-    SDL_Surface *image,*button, *quit;
+    SDL_Surface *image,*button, *quit, *box;
     image = IMG_Load("images/background.jpg");
     if(!image){
         std::cout<<"Image not loaded"<<std::endl;
@@ -55,31 +55,34 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
         std::cout<<"button not loaded"<<std::endl;
     }
     quit = IMG_Load("images/quit.png");
+    box = IMG_Load("images/ui.png");
 
     //rectangle image background
     SDL_Rect rectangle;
     rectangle.x = 0;
     rectangle.y = 0;
-    rectangle.w = 850;
+    rectangle.w = 1024;
     rectangle.h = 600;
 
     //rectangle for menu background
     SDL_Rect rect1;
     rect1.x = 800;
-    rect1.y = 0;
-    rect1.h = 900;
-    rect1.w = 500;
+    rect1.y = 290;
+    rect1.h = 270;
+    rect1.w = 210;
 
 
     //render iamge
-    SDL_Texture * ourPNG = SDL_CreateTextureFromSurface(ren,image);
+    SDL_Texture *ourPNG = SDL_CreateTextureFromSurface(ren,image);
+    SDL_Texture *textureui = SDL_CreateTextureFromSurface(ren,box);
     SDL_Texture *play = SDL_CreateTextureFromSurface(ren,button);
     SDL_Texture *texturequit = SDL_CreateTextureFromSurface(ren,quit);
-
-    SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
-    SDL_RenderFillRect(ren, &rect1);
+    
+    // SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
+    // SDL_RenderFillRect(ren, &rect1);
 
     SDL_RenderCopy(ren, ourPNG, NULL,&rectangle);
+    SDL_RenderCopy(ren,textureui, NULL, &rect1);
     SDL_RenderCopy(ren, play, NULL, &rect);
     SDL_RenderCopy(ren,texturequit, NULL, &quitrect);
     
