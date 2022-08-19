@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 
 SDL_Renderer *Game::ren = nullptr;
 TTF_Font * ourFont;
@@ -20,7 +21,7 @@ void Game::run(){
     gameLoop();
 }
 
-SDL_Rect rect = { 835, 320, 125, 75}, quitrect ={835, 450 ,125, 75};
+SDL_Rect rect = { 838, 320, 125, 75}, quitrect ={838, 450 ,125, 75};
 
 void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING); //initialize sdl

@@ -1,19 +1,24 @@
 make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.3
+ 
 # Built for x86_64-pc-msys
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri Aug 19 11:10:47 2022
+ 
+# Make data base, printed on Fri Aug 19 12:15:18 2022
 
 # Variables
+ 
 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
+ 
 # environment
 LC_ALL = C
 # environment
@@ -63,7 +68,7 @@ ONEDRIVE = C:\Users\user\OneDrive
 # makefile
 CURDIR := /c/Users/user/Desktop/C++ Project
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -98,6 +103,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 ONEDRIVECONSUMER = C:\Users\user\OneDrive
 # default
 MAKE_HOST := x86_64-pc-msys
+ 
 # makefile (from 'Makefile', line 6)
 OBJS = src/*.cpp
 # environment
@@ -133,6 +139,7 @@ PROMPT = $P$G
 # environment
 LOGONSERVER = \\PRASUN
 # environment
+ 
 USERNAME = user
 # environment
 COMMONPROGRAMFILES = C:\Program Files\Common Files
@@ -173,6 +180,7 @@ COMPILER_FLAGS = -w
 # environment
 APPDATA = C:\Users\user\AppData\Roaming
 # environment
+ 
 HOMEDRIVE = C:
 # environment
 PROCESSOR_ARCHITECTURE = AMD64
@@ -191,6 +199,7 @@ VSCODE_IPC_HOOK = \\.\pipe\680802a3ebd40da3f83beb9d3e841b70-1.70.2-main-sock
 # environment
 TERM = xterm-256color
 # default
+ 
 .RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
@@ -207,12 +216,13 @@ PROCESSOR_REVISION = 7e05
 # makefile (from 'Makefile', line 9)
 CC = g++
 # makefile (from 'Makefile', line 23)
-LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
+LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 # makefile (from 'Makefile', line 12)
 INCLUDE_PATHS = -Iinclude 
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
+ 
 # Load=101/1024=10%, Rehash=0, Collisions=15/139=11%
 
 # Pattern-specific Variable Values
@@ -222,9 +232,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # Directories
 
 # src (device 3269702283, inode 3096224744005559): 6 files, no impossibilities.
-# . (device 3269702283, inode 5348024557522936): 17 files, no impossibilities.
+# . (device 3269702283, inode 5348024557522936): 18 files, no impossibilities.
 
-# 23 files, no impossibilities in 2 directories.
+# 24 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -235,7 +245,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-26 20:22:11.233169
+#  Last modified 2022-08-19 12:15:11.4445211
 #  File has been updated.
 #  Successfully updated.
 
@@ -248,7 +258,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 11:57:48.7506846
+#  Last modified 2022-08-19 11:11:29.7889159
 #  File has been updated.
 #  Successfully updated.
 
@@ -290,7 +300,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 11:32:53.8377767
+#  Last modified 2022-08-19 12:10:26.9906757
 #  File has been updated.
 #  Successfully updated.
 
@@ -303,7 +313,7 @@ src/game.cpp:
 # Not a target:
 src/newlevel.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 11:34:19.7840133
+#  Last modified 2022-08-19 12:10:55.0766169
 #  File has been updated.
 #  Successfully updated.
 
@@ -315,12 +325,12 @@ src/newlevel.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 269 B / avg = 9 B
-# current buf: size = 8162 B / used = 269 B / count = 29 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 30 / storage = 284 B / avg = 9 B
+# current buf: size = 8162 B / used = 284 B / count = 30 / avg = 9 B
 
-# strcache performance: lookups = 39 / hit rate = 25%
+# strcache performance: lookups = 40 / hit rate = 25%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=0/39=0%
-# Finished Make data base on Fri Aug 19 11:10:47 2022
+# Load=30/8192=0%, Rehash=0, Collisions=0/40=0%
+# Finished Make data base on Fri Aug 19 12:15:18 2022
 
  

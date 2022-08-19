@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 #include <sstream>
 #include <iostream>
 #include <cmath>
@@ -25,11 +26,12 @@ SDL_Window *_window;
 SDL_Renderer *_renderer;
 TTF_Font* _font, *_textfont;
 SDL_Color _color;
+Mix_Chunk *_sound = nullptr, *_bounce = nullptr;
 
 
 int _framecount, _timerfps, _lastframe, _fps ,_score;
 SDL_Rect _paddle, _ball, _lives, _brick, _srect={750,10,25,25}, _buttonrect={110,0,51,43}, _imagerect={0,0,1024,600};
-SDL_Rect _unbreakbrick1={130,150,230,45},_unbreakbrick2={500,300,230,40},_resetrect={55,0,51,43},_homerect = {0,0,51,43};
+SDL_Rect _unbreakbrick1={130,153,230,45},_unbreakbrick2={500,300,230,40},_resetrect={55,0,51,43},_homerect = {0,0,51,43};
 float _velY, _velX;
 int _livescount;
 bool _bricks[ROW*COL];
@@ -128,6 +130,7 @@ void NewLevel:: write(std::string text,std::string _score, int x, int y) {
 void NewLevel:: update() {
     if(_livescount<=0) resetBricks();
     if(SDL_HasIntersection(&_ball, &_paddle)) {
+        Mix_PlayChannel( -1, _bounce, 0 );
         double rel = (_paddle.x+(_paddle.w/2))-(_ball.x+(SIZE/2));
         double norm = rel/(_paddle.w/3);
         double bounce = norm* (5*PI/12);
@@ -149,6 +152,7 @@ void NewLevel:: update() {
     {
         setBricks(i);
         if(SDL_HasIntersection(&_ball, &_brick) && _bricks[i]) {
+            Mix_PlayChannel( -1, _sound, 0 );
             _score += 1;
             _bricks[i] = 0;
             if(_ball.x >= _brick.x) {_velX=-_velX; _ball.x-=20;}
@@ -237,6 +241,20 @@ void NewLevel::gameLoop(){
         _font = TTF_OpenFont("ALGER.TTF", FONT_SIZE);
         _textfont = TTF_OpenFont("ALGER.TTF",110);
         
+        if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT ,2, 4096)<0){
+            std::cout<<"SDL mixer cannot be initialized";
+        }
+
+        _sound = Mix_LoadWAV("sounds/ding.wav");
+        if(_sound ==NULL){
+            std::cout<<"Error producing _sound"<<std::endl;
+        }
+
+        _bounce = Mix_LoadWAV("sounds/bounce.wav");
+        if(_bounce ==NULL){
+            std::cout<<"Error producing _sound"<<std::endl;
+        }
+
         _running = 1;
         static int lastTime=0;
         _color.r=_color.g=_color.b=255;
@@ -272,8 +290,9 @@ void NewLevel::handleEvents(){
             TTF_CloseFont(_font);
             SDL_DestroyWindow(_window);
             SDL_DestroyRenderer(_renderer);
-            SDL_Quit();
             TTF_Quit();
+            Mix_Quit();
+            SDL_Quit();
         }
 
 
@@ -294,6 +313,8 @@ void NewLevel::handleEvents(){
                 SDL_DestroyWindow(_window);
                 SDL_DestroyRenderer(_renderer);
                 TTF_Quit();
+                IMG_Quit();
+                Mix_Quit();
                 Window w;
                 w.run();
             }
@@ -303,6 +324,8 @@ void NewLevel::handleEvents(){
                 SDL_DestroyWindow(_window);
                 SDL_DestroyRenderer(_renderer);
                 TTF_Quit();
+                IMG_Quit();
+                Mix_Quit();
                 Game g;
                 g.run();
             }

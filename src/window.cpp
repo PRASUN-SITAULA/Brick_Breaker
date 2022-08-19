@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 #include <sstream>
 #include <iostream>
 #include <cmath>
@@ -25,6 +26,7 @@ SDL_Renderer *Window::renderer = nullptr;
 SDL_Window *window;
 SDL_Renderer *renderer;
 TTF_Font* font, *textfont;
+Mix_Chunk *sound = nullptr, *bounce=nullptr;
 SDL_Color color;
 
 int frameCount, timerFPS, lastFrame, fps ,score;
@@ -118,6 +120,7 @@ void Window::write(std::string text,std::string score, int x, int y) {
 void Window::update() {
     if(livesCount<=0) resetBricks();
     if(SDL_HasIntersection(&ball, &paddle)) {
+        Mix_PlayChannel( -1, bounce, 0 );
         double rel = (paddle.x+(paddle.w/2))-(ball.x+(SIZE/2));
         double norm = rel/(paddle.w/3);
         double bounce = norm* (4*PI/12);
@@ -137,6 +140,7 @@ void Window::update() {
     for(int i=0 ; i<COL*ROW; i++) {
         setBricks(i);
         if(SDL_HasIntersection(&ball, &brick) && bricks[i]) {
+            Mix_PlayChannel( -1, sound, 0 );
             score += 1;
             bricks[i]=0;
             if(ball.x >= brick.x) {velX=-velX; ball.x-=20;}
@@ -189,6 +193,7 @@ Window::Window(){
     screenHeight = height;
     screenWidth = width;
     windowState = WindowState::PLAY;
+    sound = nullptr;
 };
 Window::~Window(){};
 
@@ -207,7 +212,22 @@ void Window::gameLoop(){
         IMG_Init(imgflags);
         font = TTF_OpenFont("ALGER.TTF", FONT_SIZE);
         textfont = TTF_OpenFont("ALGER.TTF",45);
-        
+
+
+        if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT ,2, 4096)<0){
+            std::cout<<"SDL mixer cannot be initialized";
+        }
+
+        sound = Mix_LoadWAV("sounds/ding.wav");
+        if(sound ==NULL){
+            std::cout<<"Error producing sound"<<std::endl;
+        }
+
+        bounce = Mix_LoadWAV("sounds/bounce.wav");
+        if(sound ==NULL){
+            std::cout<<"Error producing sound"<<std::endl;
+        }
+
         running = 1;
         static int lastTime=0;
         color.r=color.g=color.b=255;
@@ -244,8 +264,11 @@ void Window::handleEvents(){
             TTF_CloseFont(font);
             SDL_DestroyWindow(window);
             SDL_DestroyRenderer(renderer);
-            SDL_Quit();
+            Mix_Quit();
+            IMG_Quit();
             TTF_Quit();
+            SDL_Quit();
+            
         }
 
         if(SDL_MOUSEBUTTONDOWN == event.type)
