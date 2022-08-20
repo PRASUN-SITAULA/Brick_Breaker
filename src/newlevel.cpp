@@ -195,7 +195,7 @@ void NewLevel:: render() {
     _framecount++;
     _timerfps = SDL_GetTicks()-_lastframe;
     if(_timerfps<(1000/60)) {
-        SDL_Delay((1000/60)-_timerfps);
+        SDL_Delay((1000/70)-_timerfps);
     }
     SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(_renderer, &_paddle);
