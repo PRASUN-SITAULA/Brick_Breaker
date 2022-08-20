@@ -4,14 +4,15 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
- 
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Fri Aug 19 14:31:38 2022
+# Make data base, printed on Sat Aug 20 14:01:40 2022
 
 # Variables
+ 
 
+ 
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
@@ -35,7 +36,7 @@ MAKE_COMMAND := make
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17152_LABGKYCIYTEIMYBI
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10376_JEAIHEJVVDLXILKT
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -65,7 +66,7 @@ ONEDRIVE = C:\Users\user\OneDrive
 # makefile
 CURDIR := /c/Users/user/Desktop/C++ Project
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -85,7 +86,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 17152
+VSCODE_PID = 10376
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -131,10 +132,12 @@ MAKEFILES :=
 # automatic
 ^F = $(notdir $^)
 # environment
+ 
 PROMPT = $P$G
 # environment
 LOGONSERVER = \\PRASUN
 # environment
+ 
 USERNAME = user
 # environment
 COMMONPROGRAMFILES = C:\Program Files\Common Files
@@ -227,6 +230,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # 25 files, no impossibilities in 2 directories.
 
 # Implicit Rules
+ 
 
 # No implicit rules.
 
@@ -248,7 +252,7 @@ Makefile:
 # Not a target:
 src/window.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 13:24:41.9459784
+#  Last modified 2022-08-20 14:00:45.0430244
 #  File has been updated.
 #  Successfully updated.
 
@@ -290,7 +294,7 @@ src/Main.cpp:
 # Not a target:
 src/game.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 14:29:55.7201159
+#  Last modified 2022-08-20 13:55:20.4325893
 #  File has been updated.
 #  Successfully updated.
 
@@ -303,7 +307,7 @@ src/game.cpp:
 # Not a target:
 src/newlevel.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 13:24:24.0775652
+#  Last modified 2022-08-20 14:01:16.7227276
 #  File has been updated.
 #  Successfully updated.
 
@@ -321,6 +325,6 @@ src/newlevel.cpp:
 # strcache performance: lookups = 41 / hit rate = 24%
 # hash-table stats:
 # Load=31/8192=0%, Rehash=0, Collisions=0/41=0%
-# Finished Make data base on Fri Aug 19 14:31:38 2022
+# Finished Make data base on Sat Aug 20 14:01:40 2022
 
  

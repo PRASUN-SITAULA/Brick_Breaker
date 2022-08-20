@@ -26,12 +26,12 @@ SDL_Window *_window;
 SDL_Renderer *_renderer;
 TTF_Font* _font, *_textfont;
 SDL_Color _color;
-Mix_Chunk *_sound = nullptr, *_bounce = nullptr;
+Mix_Chunk *_sound, *_bounce ;
 
 
 int _framecount, _timerfps, _lastframe, _fps ,_score;
 SDL_Rect _paddle, _ball, _lives, _brick, _srect={750,10,25,25}, _buttonrect={110,0,51,43}, _imagerect={0,0,1024,600};
-SDL_Rect _unbreakbrick1={130,153,230,45},_unbreakbrick2={500,300,230,40},_resetrect={55,0,51,43},_homerect = {0,0,51,43};
+SDL_Rect _unbreakbrick1={130,155,238,45},_unbreakbrick2={500,300,230,40},_resetrect={55,0,51,43},_homerect = {0,0,51,43};
 float _velY, _velX;
 int _livescount;
 bool _bricks[ROW*COL];
@@ -68,12 +68,12 @@ void NewLevel:: setBricks(int i) {
 //to write bricks and _paddle and _ball
 void NewLevel:: write(std::string text,std::string _score, int x, int y) {
     SDL_Surface *surface,*surface1,*image,*button,*resetbutton,*unbreakable,*homebutton;
-    SDL_Texture *texture,*texture1,*texturebutton,*textureimg,*textureresetbutton,*textureunbreakable, *textureunbreakable1,*texturehomebutton;
+    SDL_Texture *texture,*texture1,*texturebutton,*textureimg,*textureresetbutton,*textureunbreakable,*texturehomebutton;
     const char* t=text.c_str();
     const char* s=_score.c_str();
-    surface = TTF_RenderText_Blended(_font, t, _color);
+    surface = TTF_RenderText_Solid(_font, t, _color);
     //surface1 for _score
-    surface1 = TTF_RenderText_Blended(_font, s, _color);
+    surface1 = TTF_RenderText_Solid(_font, s, _color);
     //surface for button;
     button = IMG_Load("images/back.png");
     //surface for image
@@ -89,7 +89,7 @@ void NewLevel:: write(std::string text,std::string _score, int x, int y) {
     textureresetbutton = SDL_CreateTextureFromSurface(_renderer, resetbutton);
     texturehomebutton = SDL_CreateTextureFromSurface(_renderer, homebutton);
     textureunbreakable = SDL_CreateTextureFromSurface(_renderer, unbreakable);
-    textureunbreakable1 = SDL_CreateTextureFromSurface(_renderer, unbreakable);
+    // textureunbreakable1 = SDL_CreateTextureFromSurface(_renderer, unbreakable);
     texture = SDL_CreateTextureFromSurface(_renderer, surface);
     texture1 = SDL_CreateTextureFromSurface(_renderer, surface1);
 
@@ -112,7 +112,7 @@ void NewLevel:: write(std::string text,std::string _score, int x, int y) {
     SDL_RenderCopy(_renderer, texturehomebutton, NULL, &_homerect);
     SDL_RenderCopy(_renderer, texture1, NULL, &_srect);
     SDL_RenderCopy(_renderer, textureunbreakable, NULL, &_unbreakbrick1);
-    SDL_RenderCopy(_renderer, textureunbreakable1, NULL, &_unbreakbrick2);
+    SDL_RenderCopy(_renderer, textureunbreakable, NULL, &_unbreakbrick2);
     SDL_RenderCopy(_renderer, texture, NULL, &_lives);
     
     SDL_DestroyTexture(texture);
@@ -121,7 +121,7 @@ void NewLevel:: write(std::string text,std::string _score, int x, int y) {
     SDL_DestroyTexture(textureresetbutton);
     SDL_DestroyTexture(textureimg);
     SDL_DestroyTexture(textureunbreakable);
-    SDL_DestroyTexture(textureunbreakable1);
+    // SDL_DestroyTexture(textureunbreakable1);
     SDL_DestroyTexture(texturehomebutton);
 }
 
@@ -235,13 +235,14 @@ void NewLevel::gameLoop(){
         if(SDL_CreateWindowAndRenderer(width, height, 0, &_window, &_renderer) < 0) std::cout<< "Failed at SDL_CreateWindowAnd_renderer()" << std::endl;
         SDL_SetWindowTitle(_window, "Brick Breaker");
 
-        int imgflags = IMG_INIT_JPG||IMG_INIT_PNG;
-        TTF_Init();
+        int imgflags = IMG_INIT_JPG || IMG_INIT_PNG;
         IMG_Init(imgflags);
+
+        TTF_Init();
         _font = TTF_OpenFont("ALGER.TTF", FONT_SIZE);
         _textfont = TTF_OpenFont("ALGER.TTF",110);
         
-        if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT ,2, 4096)<0){
+        if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT ,2, 2048)<0){
             std::cout<<"SDL mixer cannot be initialized";
         }
 
@@ -290,6 +291,8 @@ void NewLevel::handleEvents(){
             TTF_CloseFont(_font);
             SDL_DestroyWindow(_window);
             SDL_DestroyRenderer(_renderer);
+            Mix_FreeChunk(_sound);
+            Mix_FreeChunk(_bounce);
             TTF_Quit();
             Mix_Quit();
             SDL_Quit();
@@ -312,6 +315,8 @@ void NewLevel::handleEvents(){
                 TTF_CloseFont(_font);
                 SDL_DestroyWindow(_window);
                 SDL_DestroyRenderer(_renderer);
+                Mix_FreeChunk(_sound);
+                Mix_FreeChunk(_bounce);
                 TTF_Quit();
                 IMG_Quit();
                 Mix_Quit();
@@ -323,6 +328,8 @@ void NewLevel::handleEvents(){
                 TTF_CloseFont(_font);
                 SDL_DestroyWindow(_window);
                 SDL_DestroyRenderer(_renderer);
+                Mix_FreeChunk(_sound);
+                Mix_FreeChunk(_bounce);
                 TTF_Quit();
                 IMG_Quit();
                 Mix_Quit();

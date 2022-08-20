@@ -83,7 +83,6 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     rect1.h = 270;
     rect1.w = 210;
 
-
     //render iamge
     SDL_Texture *ourPNG = SDL_CreateTextureFromSurface(ren,image);
     SDL_Texture *textureui = SDL_CreateTextureFromSurface(ren,box);
@@ -93,10 +92,20 @@ void Game::init(const char *title, int x, int y, int w, int h, Uint32 flags){
     // SDL_SetRenderDrawColor(ren, 0, 130, 127, 127);
     // SDL_RenderFillRect(ren, &rect1);
 
+    SDL_FreeSurface(image);
+    SDL_FreeSurface(button);
+    SDL_FreeSurface(quit);
+    SDL_FreeSurface(box);
+
     SDL_RenderCopy(ren, ourPNG, NULL,&rectangle);
     SDL_RenderCopy(ren,textureui, NULL, &rect1);
     SDL_RenderCopy(ren, play, NULL, &rect);
     SDL_RenderCopy(ren,texturequit, NULL, &quitrect);
+
+    SDL_DestroyTexture(ourPNG);
+    SDL_DestroyTexture(textureui);
+    SDL_DestroyTexture(play);
+    SDL_DestroyTexture(texturequit);
     
 
     SDL_RenderPresent(ren);
@@ -118,6 +127,8 @@ void Game::handleEvents(){
         { 
             SDL_DestroyWindow(window);
             SDL_DestroyRenderer(ren);
+            IMG_Quit();
+            Mix_Quit();
             SDL_Quit();
         }
         else if(evnt.type == SDL_KEYDOWN)
@@ -136,8 +147,6 @@ void Game::handleEvents(){
             }
                 
         }
-        
-    
 
         if(SDL_MOUSEBUTTONUP == evnt.type)
         {
@@ -150,6 +159,9 @@ void Game::handleEvents(){
                 std::cout<<"mouse is pressed"<<std::endl;
                 SDL_DestroyWindow(window);
                 SDL_DestroyRenderer(ren);
+                TTF_Quit();
+                Mix_Quit();
+                IMG_Quit();
                 Window window;
                 window.run();
             }

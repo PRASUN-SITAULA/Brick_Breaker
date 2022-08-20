@@ -26,7 +26,7 @@ SDL_Renderer *Window::renderer = nullptr;
 SDL_Window *window;
 SDL_Renderer *renderer;
 TTF_Font* font, *textfont;
-Mix_Chunk *sound = nullptr, *bounce=nullptr;
+Mix_Chunk *sound, *bounce;
 SDL_Color color;
 
 int frameCount, timerFPS, lastFrame, fps ,score;
@@ -69,11 +69,9 @@ void Window::write(std::string text,std::string score, int x, int y) {
     SDL_Texture *texture,*texture1,*textureresetbutton,*textureimg, *texturenextbutton,*texturehome;
     const char* t=text.c_str();
     const char* s=score.c_str();
-    surface = TTF_RenderText_Blended(font, t, color);
+    surface = TTF_RenderText_Solid(font, t, color);
     //surface1 for score
-    surface1 = TTF_RenderText_Blended(textfont, s, color);
-    //
-    //surface for reset button;
+    surface1 = TTF_RenderText_Solid(textfont, s, color);
     
     //surface for image
     image = IMG_Load("images/brick.jpg");
@@ -94,11 +92,11 @@ void Window::write(std::string text,std::string score, int x, int y) {
     lives.y = y-lives.h;
 
     SDL_FreeSurface(image);
-    SDL_FreeSurface(surface);
-    SDL_FreeSurface(surface1);
     SDL_FreeSurface(resetbutton);
     SDL_FreeSurface(nextbutton);
     SDL_FreeSurface(homebutton);
+    SDL_FreeSurface(surface);
+    SDL_FreeSurface(surface1);
     
     SDL_RenderCopy(renderer, textureimg, NULL, &imagerect);
     SDL_RenderCopy(renderer, textureresetbutton, NULL, &buttonrect);
@@ -207,12 +205,11 @@ void Window::gameLoop(){
         if(SDL_CreateWindowAndRenderer(width, height, 0, &window, &renderer) < 0) std::cout<< "Failed at SDL_CreateWindowAndRenderer()" << std::endl;
         SDL_SetWindowTitle(window, "Brick Breaker");
 
-        int imgflags = IMG_INIT_JPG;
+        int imgflags = IMG_INIT_JPG || IMG_INIT_PNG;
         TTF_Init();
         IMG_Init(imgflags);
         font = TTF_OpenFont("ALGER.TTF", FONT_SIZE);
         textfont = TTF_OpenFont("ALGER.TTF",45);
-
 
         if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT ,2, 4096)<0){
             std::cout<<"SDL mixer cannot be initialized";
@@ -264,6 +261,8 @@ void Window::handleEvents(){
             TTF_CloseFont(font);
             SDL_DestroyWindow(window);
             SDL_DestroyRenderer(renderer);
+            Mix_FreeChunk(sound);
+            Mix_FreeChunk(bounce);
             Mix_Quit();
             IMG_Quit();
             TTF_Quit();
@@ -284,20 +283,30 @@ void Window::handleEvents(){
             }
             if (SDL_PointInRect(&mousePosition, &nextrect)) {
                 std::cout<<"nextbutton is pressed"<<std::endl;
-                NewLevel nl;
-                nl.run();
                 TTF_CloseFont(font);
+                Mix_FreeChunk(sound);
+                Mix_FreeChunk(bounce);
+                TTF_Quit();
+                IMG_Quit();
+                Mix_Quit();
                 SDL_DestroyWindow(window);
                 SDL_DestroyRenderer(renderer);
+                NewLevel nl;
+                nl.run();
               
             }
             if (SDL_PointInRect(&mousePosition, &homerect)) {
                 std::cout<<"homebutton is pressed"<<std::endl;
-                Game g;
-                g.run();
                 TTF_CloseFont(font);
+                Mix_FreeChunk(sound);
+                Mix_FreeChunk(bounce);
+                TTF_Quit();
+                IMG_Quit();
+                Mix_Quit();
                 SDL_DestroyWindow(window);
                 SDL_DestroyRenderer(renderer);
+                Game g;
+                g.run();
                 
             }
         }
